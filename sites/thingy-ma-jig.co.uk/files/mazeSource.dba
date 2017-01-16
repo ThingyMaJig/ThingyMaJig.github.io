@@ -1,0 +1,1880 @@
+sync on
+sync rate 0
+
+SET TEXT SIZE 20
+
+TIMERSTORAGE AS DWORD
+
+x = 800
+y = 600
+d = 16
+if file exist("Settings\settings.ini")
+   open to read 1, "Settings\settings.ini"
+   read string 1, temp$ : resSetting = val(temp$)
+   read string 1, temp$ : depthSetting = val(temp$)
+   close file 1
+
+
+   select resSetting
+      case 0 : x = 320  : y = 200  : endcase
+      case 1 : x = 512  : y = 384  : endcase
+      case 2 : x = 640  : y = 480  : endcase
+      case 3 : x = 800  : y = 600  : endcase
+      case 4 : x = 1024 : y = 768  : endcase
+      case 5 : x = 1152 : y = 864  : endcase
+      case 6 : x = 1280 : y = 960  : endcase
+      case 7 : x = 1280 : y = 1024 : endcase
+      case 8 : x = 1400 : y = 1050 : endcase
+      case 9 : x = 1600 : y = 1200 : endcase
+   endselect
+
+   select depthSetting
+      case 16 : d = 16 : endcase
+      case 32 : d = 32 : endcase
+   endselect
+endif
+
+set display mode x,y,d
+
+
+randomize timer()
+color backdrop 0
+backdrop on
+
+
+
+
+#constant M_WIDTH 12
+#constant M_HEIGHT 12
+#constant BALL_RADIUS 0.125
+#constant TURN_RATE 2.88
+#constant ACC_RATE 0.005
+#constant MAX_BULLETS 500
+
+global MAP_SCALE#
+MAP_SCALE# = 16.0 * screen width() / 1280.0
+
+
+type mazeCell
+   N
+   S
+   E
+   W
+endtype
+
+type Coord
+   x
+   y
+endtype
+
+type Coord2
+   x#
+   y#
+   z#
+endtype
+
+type Speed
+   x#
+   z#
+endtype
+
+type PlayerData
+   dAngle#
+   Angle#
+   CamAngle#
+   Speed#
+   Pitch#
+   Alive
+   DeathTime
+   CurrentFrame
+endtype
+
+
+
+
+
+
+Dim BulletsLeft(4,2)
+BulletsLeft(1,1) = 30 : BulletsLeft(1,2) = 3
+BulletsLeft(2,1) = 30 : BulletsLeft(2,2) = 3
+BulletsLeft(3,1) = 30 : BulletsLeft(3,2) = 3
+BulletsLeft(4,1) = 30 : BulletsLeft(4,2) = 3
+
+Dim LastFired(4)
+Dim LastReloaded(4)
+
+load image "GFX\bullet.jpg", 20
+load image "GFX\bulletAmmo.png", 21
+load image "GFX\AmmoClip.png", 22
+load image "GFX\panel.png", 23
+load image "GFX\heart.png", 24
+
+sprite 20, 0, 0, 21
+bulletScale# = (screen height() * 0.48) / 31.0
+size sprite 20, bulletScale# * 4.0, bulletScale#
+set sprite alpha 20, 160
+hide sprite 20
+
+sprite 21, 0, 0, 22
+ClipScale# = (screen height() * 0.25) / 5.0
+size sprite 21, ClipScale# * 0.76190476190476190476190476190476, ClipScale#
+set sprite alpha 21, 160
+hide sprite 21
+
+sprite 22, 0, 0, 23
+PanelScale# = screen height() * 0.50
+size sprite 22, PanelScale# * 0.30, PanelScale#
+hide sprite 22
+
+sprite 23, 0, 0, 24
+HeartScale# = ClipScale# * 1.4
+size sprite 23, HeartScale#, HeartScale#
+set sprite alpha 23, 160
+hide sprite 23
+
+
+
+
+dim BulletOffsets#(4,2)
+dim ClipOffsets#(4,2)
+dim PanelOffsets#(4,2)
+dim HeartOffsets#(4,2)
+
+BulletOffsets#(1,1) = (screen width() * 0.5) - (bulletScale# * 5.0)                      : BulletOffsets#(1,2) = screen height() * 0.01
+ClipOffsets#(1,1)   = (screen width() * 0.5) - (bulletScale# * 5.0) - ClipScale#         : ClipOffsets#(1,2)   = screen height() * 0.01
+PanelOffsets#(1,1)  = (screen width() * 0.5) - PanelScale#*0.30                          : PanelOffsets#(1,2)  = 0.0
+HeartOffsets#(1,1)  = (screen width() * 0.5) - PanelScale#*0.28                          : HeartOffsets#(1,2)  = (screen height() * 0.477) - HeartScale#
+
+BulletOffsets#(2,1) = (screen width() * 1.0) - (bulletScale# * 5.0)                      : BulletOffsets#(2,2) = screen height() * 0.01
+ClipOffsets#(2,1)   = (screen width() * 1.0) - (bulletScale# * 5.0) - ClipScale#         : ClipOffsets#(2,2)   = screen height() * 0.01
+PanelOffsets#(2,1)  = (screen width() * 1.0) - PanelScale#*0.30                          : PanelOffsets#(2,2)  = 0.0
+HeartOffsets#(2,1)  = (screen width() * 1.0) - PanelScale#*0.28                          : HeartOffsets#(2,2)  = (screen height() * 0.477) - HeartScale#
+
+BulletOffsets#(3,1) = (screen width() * 0.5) - (bulletScale# * 5.0)                      : BulletOffsets#(3,2) = screen height() * 0.51
+ClipOffsets#(3,1)   = (screen width() * 0.5) - (bulletScale# * 5.0) - ClipScale#         : ClipOffsets#(3,2)   = screen height() * 0.51
+PanelOffsets#(3,1)  = (screen width() * 0.5) - PanelScale#*0.30                          : PanelOffsets#(3,2)  = screen height() * 0.50
+HeartOffsets#(3,1)  = (screen width() * 0.5) - PanelScale#*0.28                          : HeartOffsets#(3,2)  = (screen height()*0.977) - HeartScale#
+
+BulletOffsets#(4,1) = (screen width() * 1.0) - (bulletScale# * 5.0)                      : BulletOffsets#(4,2) = screen height() * 0.51
+ClipOffsets#(4,1)   = (screen width() * 1.0) - (bulletScale# * 5.0) - ClipScale#         : ClipOffsets#(4,2)   = screen height() * 0.51
+PanelOffsets#(4,1)  = (screen width() * 1.0) - PanelScale#*0.30                          : PanelOffsets#(4,2)  = screen height() * 0.50
+HeartOffsets#(4,1)  = (screen width() * 1.0) - PanelScale#*0.28                          : HeartOffsets#(4,2)  = (screen height()*0.977) - HeartScale#
+
+
+
+load sound "Sounds\fire.wav",      1
+load sound "Sounds\clipempty.wav", 2
+load sound "Sounds\reload.wav",    3
+load sound "Sounds\new_clip.wav",  4
+load sound "Sounds\powerup.wav",   5
+load sound "Sounds\bounce.wav",    6
+load sound "Sounds\explode.wav",   7
+global bulletObj = 10000
+
+
+
+
+
+dim Maze(M_WIDTH, M_HEIGHT) as mazeCell
+dim MazeWallID(M_WIDTH, M_HEIGHT) as mazeCell
+
+for i = 1 to M_WIDTH
+   for j = 1 to M_HEIGHT
+      Maze(i,j).N = 1
+      Maze(i,j).S = 1
+      Maze(i,j).E = 1
+      Maze(i,j).W = 1
+   next j
+next i
+
+dim CellStack() as Coord : empty array CellStack() : array index to stack CellStack()
+TotalCells = M_WIDTH * M_HEIGHT
+VisitedCells = 1
+currentCell as Coord
+currentCell.x = rnd(M_WIDTH-2)+1
+currentCell.y = rnd(M_HEIGHT-2)+1
+Dim Available(4)
+
+
+gosub GenerateMaze
+gosub RenderMaze3D
+
+
+load image "GFX\p1.png", 1
+load image "GFX\p2.png", 2
+load image "GFX\p3.png", 3
+load image "GFX\p4.png", 4
+load image "GFX\explode.png", 50
+
+make object cylinder 10, 1
+scale object 10, 5, 25, 5
+rotate object 10, 90, 0, 0
+make mesh from object 1, 10
+delete object 10
+
+for i = 1 to 4
+   make object sphere i, BALL_RADIUS*2.0, 24, 24
+   add limb i, 1, 1
+   offset limb i, 1, 0, 0, 0.125
+   set object cull i, 0
+   select i
+      case 1 : position object i, 1.0, BALL_RADIUS+0.01, 1.0          : endcase
+      case 2 : position object i, M_WIDTH, BALL_RADIUS+0.01, 1.0      : endcase
+      case 3 : position object i, 1.0, BALL_RADIUS+0.01, M_HEIGHT     : endcase
+      case 4 : position object i, M_WIDTH, BALL_RADIUS+0.01, M_HEIGHT : endcase
+   endselect
+   texture object i, i
+   set object specular power i, 10
+   set object specular i, rgb(255,255,255)
+   set object collision to boxes i
+next i
+
+dim p(4) as PlayerData
+for i = 1 to 4
+   p(i).Angle# = 0.0
+   p(i).Speed# = 0.0
+   p(i).Alive = 1
+next i
+
+
+`PREPARE AI STUFF
+dim GridTimes(4, M_WIDTH, M_HEIGHT)
+
+
+
+
+
+
+
+
+
+set directional light 0, -1, -1, -1
+position light 0, 10, 10, 10
+
+
+
+global OverviewOffsetX# : OverviewOffsetX# = screen width()  * 0.01
+global OverviewOffsetY# : OverviewOffsetY# = screen height() * 0.01
+
+sprite 10, 0, 0, 7
+set sprite alpha 10, 128
+hide sprite 10
+
+
+load image "GFX\blob1.png", 10
+load image "GFX\blob2.png", 11
+load image "GFX\blob3.png", 12
+load image "GFX\blob4.png", 13
+load image "GFX\powerup.png", 14
+
+for i = 1 to 5
+   sprite i, 0, 0, i+9
+   set sprite alpha i, 160
+   size sprite i, MAP_SCALE#, MAP_SCALE#
+   offset sprite i, MAP_SCALE# *0.5, MAP_SCALE# *0.5
+   hide sprite i
+next i
+
+
+
+
+`Powerups
+`0 = AMMO
+`1 = +100 Points
+type PowerupData
+   Pos as Coord
+   PowerupType
+endtype
+
+Dim Powerups(15) as PowerupData
+for i = 1 to 15
+   GeneratePowerup(i)
+next i
+
+
+
+
+
+
+
+
+
+
+
+
+`SCORES
+Dim scores(4)
+Dim currentUV#(4,4)
+global DIGIT_SIZE#
+DIGIT_SIZE# = 16.0 * screen width() / 1280.0
+load image "GFX\numbers.png", 200
+for i = 0 to 3
+   sprite 100+i, (i*DIGIT_SIZE#) + (PanelOffsets#(1,1) + (PanelScale#*0.15) - (DIGIT_SIZE#*2.0)), PanelOffsets#(1,2) + (screen height() * 0.477), 200 : size sprite 100+i, DIGIT_SIZE#, DIGIT_SIZE#
+   sprite 110+i, (i*DIGIT_SIZE#) + (PanelOffsets#(2,1) + (PanelScale#*0.15) - (DIGIT_SIZE#*2.0)), PanelOffsets#(2,2) + (screen height() * 0.477), 200 : size sprite 110+i, DIGIT_SIZE#, DIGIT_SIZE#
+   sprite 120+i, (i*DIGIT_SIZE#) + (PanelOffsets#(3,1) + (PanelScale#*0.15) - (DIGIT_SIZE#*2.0)), PanelOffsets#(3,2) + (screen height() * 0.477), 200 : size sprite 120+i, DIGIT_SIZE#, DIGIT_SIZE#
+   sprite 130+i, (i*DIGIT_SIZE#) + (PanelOffsets#(4,1) + (PanelScale#*0.15) - (DIGIT_SIZE#*2.0)), PanelOffsets#(4,2) + (screen height() * 0.477), 200 : size sprite 130+i, DIGIT_SIZE#, DIGIT_SIZE#
+
+   CurrentUV#(i,1) = 0.0
+   CurrentUV#(i,2) = 0.0
+   CurrentUV#(i,3) = 0.1
+   CurrentUV#(i,4) = 0.1
+
+   hide sprite 100+i
+   hide sprite 110+i
+   hide sprite 120+i
+   hide sprite 130+i
+next i
+
+
+
+
+
+
+
+`HEALTH
+Dim health(4)
+Dim currentHealthUV#(3,4)
+global DIGIT_SIZE#
+DIGIT_SIZE# = 16.0 * screen width() / 1280.0
+health(1) = 100
+health(2) = 100
+health(3) = 100
+health(4) = 100
+load image "GFX\numbers2.png", 201
+for i = 0 to 2
+   sprite 200+i, ((i-2)*DIGIT_SIZE# * 0.75) + HeartOffsets#(1,1) + (HeartScale#*0.5), HeartOffsets#(1,2) + (HeartScale#*0.25), 201 : size sprite 200+i, DIGIT_SIZE#, DIGIT_SIZE#
+   sprite 210+i, ((i-2)*DIGIT_SIZE# * 0.75) + HeartOffsets#(2,1) + (HeartScale#*0.5), HeartOffsets#(2,2) + (HeartScale#*0.25), 201 : size sprite 210+i, DIGIT_SIZE#, DIGIT_SIZE#
+   sprite 220+i, ((i-2)*DIGIT_SIZE# * 0.75) + HeartOffsets#(3,1) + (HeartScale#*0.5), HeartOffsets#(3,2) + (HeartScale#*0.25), 201 : size sprite 220+i, DIGIT_SIZE#, DIGIT_SIZE#
+   sprite 230+i, ((i-2)*DIGIT_SIZE# * 0.75) + HeartOffsets#(4,1) + (HeartScale#*0.5), HeartOffsets#(4,2) + (HeartScale#*0.25), 201 : size sprite 230+i, DIGIT_SIZE#, DIGIT_SIZE#
+
+   set sprite alpha 200+i, 192
+   set sprite alpha 210+i, 192
+   set sprite alpha 220+i, 192
+   set sprite alpha 230+i, 192
+
+   currentHealthUV#(1,i) = 0.0
+   currentHealthUV#(2,i) = 0.0
+   currentHealthUV#(3,i) = 0.0
+   currentHealthUV#(4,i) = 0.0
+
+   hide sprite 200+i
+   hide sprite 210+i
+   hide sprite 220+i
+   hide sprite 230+i
+next i
+
+
+
+
+
+
+
+`Control Details
+type ControlCommands
+   Left
+   Right
+   Forward
+   Brake
+   Fire
+   Reload
+endtype
+Dim ControlKeys(4) as ControlCommands
+Dim PlayerOption(4)
+PlayerOption(1) = 1
+PlayerOption(2) = 5
+PlayerOption(3) = 5
+PlayerOption(4) = 5
+`METHOD A
+ControlKeys(1).Left    = 203 :`Left Arrow
+ControlKeys(1).Right   = 205 :`Right Arrow
+ControlKeys(1).Forward = 200 :`Up Arrow
+ControlKeys(1).Brake   = 208 :`Down Arrow
+ControlKeys(1).Fire    = 157 :`Right Control
+ControlKeys(1).Reload  = 54  :`Right Shift
+
+`METHOD B
+ControlKeys(2).Left    = 30 :`A
+ControlKeys(2).Right   = 32 :`D
+ControlKeys(2).Forward = 17 :`W
+ControlKeys(2).Brake   = 31 :`S
+ControlKeys(2).Fire    = 29 :`Left Control
+ControlKeys(2).Reload  = 42 :`Left Shift
+
+`METHOD C
+ControlKeys(3).Left    = 36 :`J
+ControlKeys(3).Right   = 38 :`L
+ControlKeys(3).Forward = 23 :`I
+ControlKeys(3).Brake   = 37 :`K
+ControlKeys(3).Fire    = 47 :`V
+ControlKeys(3).Reload  = 48 :`B
+
+`METHOD D
+ControlKeys(4).Left    = 75 :`Num4
+ControlKeys(4).Right   = 77 :`Num6
+ControlKeys(4).Forward = 72 :`Num8
+ControlKeys(4).Brake   = 76 :`Num5
+ControlKeys(4).Fire    = 156:`NumEnter
+ControlKeys(4).Reload  = 82 :`NumZero
+
+
+
+
+
+`MENU STUFF
+`  STATUS
+`    -1 = CREATION
+`     0 = FLY IN WINDOW
+`     1 = MAKE AND FADE BUTTONS
+`     2 = DETECT MOUSE/USE MENU
+`     3 = WINDOW FLY AWAY
+type WindowData
+   width#
+   height#
+   status
+   T#
+   Options
+   Obj
+endtype
+
+`WindowType:
+`  1 = Main Menu
+`  2 = Options
+WindowType = 1
+
+
+
+Dim Menu(2) as WindowData
+Menu(1).width# = 4.0
+Menu(1).height# = 3.0
+Menu(1).status = 0
+Menu(1).T# = 0.0
+Menu(1).Obj = 79
+
+Menu(2).width# = 4.5
+Menu(2).height# = 4.0
+Menu(2).status = -1
+Menu(2).T# = 0.0
+Menu(2).Obj = 80
+
+
+
+`MenuItems
+type MenuItems
+   path$
+   ID
+   Menu
+endtype
+Dim MenuOptions() as MenuItems
+empty array MenuOptions()
+
+array insert at bottom MenuOptions() : array index to bottom MenuOptions(): MenuOptions().path$ = "GFX\menu\1\start.png"   : MenuOptions().ID = 85 : MenuOptions().Menu = 1
+array insert at bottom MenuOptions() : array index to bottom MenuOptions(): MenuOptions().path$ = "GFX\menu\1\options.png" : MenuOptions().ID = 86 : MenuOptions().Menu = 1
+array insert at bottom MenuOptions() : array index to bottom MenuOptions(): MenuOptions().path$ = "GFX\menu\1\exit.png"    : MenuOptions().ID = 87 : MenuOptions().Menu = 1
+
+array insert at bottom MenuOptions() : array index to bottom MenuOptions(): MenuOptions().path$ = "GFX\menu\2\back.png"    : MenuOptions().ID = 88 : MenuOptions().Menu = 2
+array insert at bottom MenuOptions() : array index to bottom MenuOptions(): MenuOptions().path$ = "GFX\menu\2\P1A.png"     : MenuOptions().ID = 89 : MenuOptions().Menu = 2
+array insert at bottom MenuOptions() : array index to bottom MenuOptions(): MenuOptions().path$ = "GFX\menu\2\AI.png"      : MenuOptions().ID = 90 : MenuOptions().Menu = 2
+array insert at bottom MenuOptions() : array index to bottom MenuOptions(): MenuOptions().path$ = "GFX\menu\2\AI.png"      : MenuOptions().ID = 91 : MenuOptions().Menu = 2
+array insert at bottom MenuOptions() : array index to bottom MenuOptions(): MenuOptions().path$ = "GFX\menu\2\AI.png"      : MenuOptions().ID = 92 : MenuOptions().Menu = 2
+
+
+for i = 0 to array count(MenuOptions())
+   load image MenuOptions(i).path$, MenuOptions(i).ID
+next i
+
+
+
+`FlyPath
+flyA as Coord2
+flyB as Coord2
+flyC as Coord2
+flyD as Coord2
+flyE as Coord2
+flyF as Coord2
+flyG as Coord2
+
+flyA.x# = -10.0 : flyA.y# = 0.0 : flyA.z# =  5.0
+flyB.x# = -10.0 : flyB.y# = 0.0 : flyB.z# = 15.0
+flyC.x# =   0.0 : flyC.y# = 0.0 : flyC.z# = 15.0
+
+flyD.x# =   0.0 : flyD.y# = 0.0 : flyD.z# =  5.0
+
+flyE.x# =   0.0 : flyD.y# = 0.0 : flyD.z# = 15.0
+flyF.x# =  10.0 : flyD.y# = 0.0 : flyD.z# = 15.0
+flyG.x# =  10.0 : flyD.y# = 0.0 : flyD.z# =  5.0
+
+
+makeWindow(Menu(1).width#, Menu(1).height#, Menu(1).Obj)
+makeWindow(Menu(2).width#, Menu(2).height#, Menu(2).Obj)
+
+
+pos as Coord2
+
+
+
+
+global frameTime#
+hide mouse
+`MAKE MOUSE
+mPos as Coord2
+mSpeed as Coord2
+mPos.x# = 0.0
+mPos.y# = 0.0
+mPos.z# = 4.8
+mSpeed.x# = 0.0
+mSpeed.y# = 0.0
+
+
+load image "GFX\menu\pointer.PNG", 81
+make object cone 81, 1
+make mesh from object 81, 81
+
+scale limb  81, 0, 10, 15, 5
+offset limb 81,0, 0, -0.10, 0
+
+add limb    81, 1, 81
+scale limb  81, 1, 10, 15, 5
+offset limb 81, 1, 0, 0.10, 0
+rotate limb 81, 1, 0, 0, 180
+
+add limb    81, 2, 81
+scale limb  81, 2, 10, 15, 5
+offset limb 81, 2, -0.10, 0, 0
+rotate limb 81, 2, 0, 0, 270
+
+add limb    81, 3, 81
+scale limb  81, 3, 10, 15, 5
+offset limb 81, 3, 0.10, 0, 0
+rotate limb 81, 3, 0, 0, 90
+
+texture object 81, 81
+scale object texture 81, 0.5, 0.5
+
+make object sphere 82, 0.1
+lock object on  81
+position object 81, mPos.x#, mPos.y#, mPos.z#
+
+texture object       82, 81
+scale object texture 82, 0.5, 0.5
+lock object on       82
+position object      82, mPos.x#, mPos.y#, mPos.z#
+
+
+
+frameTime# = 1.0
+startTime = timer()
+mouseDown = 0
+do
+   frameTime# = (frameTime# * 0.8) + ((timer() - startTime) * 0.2)
+   startTime = timer()
+
+   for m = 1 to 2
+   select Menu(m).status
+         case -1
+            hide object Menu(m).Obj
+         endcase
+         case 0
+            if Menu(m).T# < 1.0
+               if object visible(Menu(m).Obj) = 0 then show object Menu(m).Obj
+               pos.x# = CubicBezier(flyA.x#, flyB.x#, flyC.x#, flyD.x#, Menu(m).T#)
+               pos.y# = CubicBezier(flyA.y#, flyB.y#, flyC.y#, flyD.y#, Menu(m).T#)
+               pos.z# = CubicBezier(flyA.z#, flyB.z#, flyC.z#, flyD.z#, Menu(m).T#)
+               point object Menu(m).Obj, pos.x#, pos.y#, pos.z#
+               position object Menu(m).Obj, pos.x#, pos.y#, pos.z#
+               inc Menu(m).T#, frameTime# * 0.002
+            else
+               Menu(m).status = 1
+               Menu(m).T# = 0.0
+               position object Menu(m).Obj, flyD.x#, flyD.y#, flyD.z#
+               point object    Menu(m).Obj, flyD.x#, flyD.y#, -10
+               Menu(m).Options = -1
+
+               for i = 0 to array count(MenuOptions())
+                  if MenuOptions(i).Menu = windowType
+                     inc Menu(m).Options
+                     id = MenuOptions(i).ID
+                     if object exist(id) then delete object id
+                     make object plain id, Menu(m).width# * 0.8, Menu(m).width# * 0.1
+                     texture object id, id
+                     set object transparency id, 3
+                     lock object on id,
+                     set object light id, 1
+                     set alpha mapping on id, 0
+                  endif
+               next i
+
+
+            endif
+         endcase
+
+         case 1
+            if Menu(m).T# < 1.0
+               inc Menu(m).T#, frameTime# * 0.004
+               if Menu(m).T# > 1.0 then Menu(m).T# = 1.0
+
+               menuItem = 0
+               for i = 0 to array count(MenuOptions())
+                  if MenuOptions(i).Menu = windowType
+                     id = MenuOptions(i).ID
+                     set alpha mapping on id, Menu(m).T# * 100.0
+                     y# = (Menu(m).height# * 0.33) - (menuItem * (Menu(m).height# * 0.66 / Menu(m).Options))
+                     inc menuItem
+                     position object id, 0, y#, 4.8 + (sin(timer() * 0.180) * 0.1)
+                  endif
+               next i
+            else
+               Menu(m).status = 2
+               Menu(m).T#  = 0.0
+            endif
+         endcase
+
+         case 2
+            menuItem = 0
+            for id = 0 to array count(MenuOptions())
+               i = MenuOptions(id).ID
+               if MenuOptions(id).Menu = windowType AND object exist(i)
+                  my# = (Menu(m).height# * 0.33) - (menuItem * (Menu(m).height# * 0.66 / Menu(m).Options))
+                  inc menuItem
+                  position object i, 0, my#, 4.8 + (sin(timer() * 0.180) * 0.1)
+
+                  if object collision(82, i)
+                     set object light i, 0
+
+                     if mouseclick() = 1
+                        `MAIN MENU
+                        if i = MenuOptions(0).ID
+                           goto START_GAME
+                        endif
+                        if i = MenuOptions(1).ID
+                           windowType = 2
+                           Menu(1).status = 3
+                           Menu(1).T# = 0.0
+                           Menu(2).status = 0
+                           Menu(2).T# = 0.0
+                        endif
+                        if i = MenuOptions(2).ID
+                           end
+                        endif
+
+
+                        `OPTIONS MENU
+                        if i = MenuOptions(3).ID
+                           windowType = 1
+                           Menu(1).status = 0
+                           Menu(1).T# = 0.0
+                           Menu(2).status = 3
+                           Menu(2).T# = 0.0
+                        endif
+
+                        for j = 1 to 4
+                           if i = MenuOptions(j+3).ID AND mouseDown = 0
+                              mouseDown = 1
+                              inc PlayerOption(j)
+                              if PlayerOption(j) > 5 then PlayerOption(j) = 1
+                              j$ = str$(j)
+                              select PlayerOption(j)
+                                 case 1 : load image "GFX\menu\2\P"+j$+"A.png", MenuOptions(j+3).ID : endcase
+                                 case 2 : load image "GFX\menu\2\P"+j$+"B.png", MenuOptions(j+3).ID : endcase
+                                 case 3 : load image "GFX\menu\2\P"+j$+"C.png", MenuOptions(j+3).ID : endcase
+                                 case 4 : load image "GFX\menu\2\P"+j$+"D.png", MenuOptions(j+3).ID : endcase
+                                 case 5 : load image "GFX\menu\2\AI.png",       MenuOptions(j+3).ID : endcase
+                              endselect
+                              texture object MenuOptions(j+3).ID,MenuOptions(j+3).ID
+                           endif
+                        next j
+
+                     else
+                        if mouseclick() = 0 then mouseDown = 0
+                     endif
+                  else
+                     set object light i, 1
+                  endif
+
+               endif
+            next i
+         endcase
+
+         case 3
+            if Menu(m).T# < 1.0
+               inc Menu(m).T#, frameTime# * 0.01
+               if Menu(m).T# > 1.0 then Menu(m).T# = 1.0
+
+               for i = 0 to array count(MenuOptions())
+                  if MenuOptions(i).Menu <> windowType
+                     id = MenuOptions(i).ID
+                     set alpha mapping on id, 100.0 - (Menu(m).T#  * 100.0)
+                  endif
+               next i
+            else
+               if Menu(m).T# < 2.0
+                  tempT# = Menu(m).T# - 1.0
+                  pos.x# = CubicBezier(flyD.x#, flyE.x#, flyF.x#, flyG.x#, tempT#)
+                  pos.y# = CubicBezier(flyD.y#, flyE.y#, flyF.y#, flyG.y#, tempT#)
+                  pos.z# = CubicBezier(flyD.z#, flyE.z#, flyF.z#, flyG.z#, tempT#)
+                  point object Menu(m).Obj, pos.x#, pos.y#, pos.z#
+                  position object Menu(m).Obj, pos.x#, pos.y#, pos.z#
+                  inc Menu(m).T#, frameTime# * 0.00075
+               else
+                  Menu(m).status = 4
+                  Menu(m).T# = 0.0
+
+                  for i = 0 to array count(MenuOptions())
+                     if MenuOptions(i).Menu <> windowType
+                        id = MenuOptions(i).ID
+                        if object exist(id) then delete object id
+                     endif
+                  next i
+               endif
+            endif
+         endcase
+
+         case 4
+            if object visible(Menu(m).Obj) = 1 then hide object Menu(m).Obj
+         endcase
+      endselect
+   next m
+
+
+
+
+
+   `MOUSE STUFF
+   roll object right 81, frameTime# * 0.180
+
+   mPos.x# = (mousex() * 7.5 / screen width()) - 3.25
+   mPos.y# = 2.25 - (mousey() * 4.5 / screen height())
+
+   mPos.z# = 4.8 + (sin(timer() * 0.180) * 0.1)
+   position object 81, mPos.x#, mPos.y#, mPos.z#
+   position object 82, mPos.x#, mPos.y#, mPos.z#
+
+
+
+
+
+
+
+
+
+
+   inc camAngle#, frameTime# * 0.005
+   position camera object position x(40001) + (sin(camAngle#) * M_WIDTH), 5.0, object position z(40001) + (cos(camAngle#) * M_HEIGHT*0.5)
+   point camera object position x(40001),0,object position z(40001)
+
+   sync
+loop
+
+
+
+
+
+
+
+
+
+START_GAME:
+for i = 79 to 100
+   if object exist(i) then delete object i
+next i
+
+
+
+for i = 0 to 3
+   if i > 0 then make camera i
+   set camera range i, 0.1, 100
+   backdrop on i
+   color backdrop i, 0
+next i
+color backdrop 0
+
+set camera aspect 0, (1.0 * screen width()) / screen height()
+set camera aspect 1, (1.0 * screen width()) / screen height()
+set camera aspect 2, (1.0 * screen width()) / screen height()
+set camera aspect 3, (1.0 * screen width()) / screen height()
+
+for i = 1 to 4
+   position camera i-1, object position x(i) - (sin(p(i).CamAngle#) * 0.75), 1.0, object position z(i) - (cos(p(i).CamAngle#) * 0.75)
+   point camera    i-1, object position x(i), object position y(i), object position z(i)
+next i
+
+
+aSize# = 0.0
+GAME_STATUS = 0
+
+startTime = timer()
+do
+   frameTime# = (frameTime# * 0.8) + ((timer() - startTime) * 0.2)
+   startTime = timer()
+
+   select GAME_STATUS
+      case 0
+        inc aSize#, frameTime# * 0.090
+        size# = (cos(aSize#) * 0.5) + 0.5
+        if size# < 0.5
+            size# = 0.5
+            GAME_STATUS = 1
+
+            for i = 0 to 3
+               show sprite 100+i
+               show sprite 110+i
+               show sprite 120+i
+               show sprite 130+i
+
+               if i < 3
+                  show sprite 200+i
+                  show sprite 210+i
+                  show sprite 220+i
+                  show sprite 230+i
+
+               endif
+            next i
+        endif
+
+        TOP#    = screen height() * (size# - 0.5)
+        LEFT#   = screen width()  * (size# - 0.5)
+        BOTTOM# = screen height() * (1.5 - size#)
+        RIGHT#  = screen width()  * (1.5 - size#)
+
+        set camera view 0, LEFT#,                TOP#,                  screen width() * 0.5, screen height() * 0.5 : `TOP LEFT
+        set camera view 1, screen width() * 0.5, TOP#,                  RIGHT#,               screen height() * 0.5 : `TOP RIGHT
+        set camera view 2, LEFT#,                screen height() * 0.5, screen width() * 0.5, BOTTOM# : `BOTTOM LEFT
+        set camera view 3, screen width() * 0.5, screen height() * 0.5, RIGHT#,               BOTTOM# : `BOTTOM RIGHT
+
+        ink 0, rgb(255,255,255)
+        box 0, (screen height()*0.5)-2, screen width(), (screen height()*0.5)+2
+        box (screen width()*0.5)-2, 0, (screen width()*0.5)+2, screen height()
+      endcase
+
+      case 1
+         for i = 1 to 4
+            if p(i).Alive = 1
+               if PlayerOption(i) < 5
+                  if keystate(ControlKeys(PlayerOption(i)).Left)  then dec p(i).dAngle#, frameTime# * TURN_RATE
+                  if keystate(ControlKeys(PlayerOption(i)).Right) then inc p(i).dAngle#, frameTime# * TURN_RATE
+
+                  dec p(i).dAngle#, p(i).dAngle# * frameTime# * 0.0075
+
+                  if keystate(ControlKeys(PlayerOption(i)).Forward) then inc p(i).Speed#, frameTime# * ACC_RATE
+                  if keystate(ControlKeys(PlayerOption(i)).Brake)
+                     dec p(i).Speed#, frameTime# * ACC_RATE
+                     if p(i).Speed# < 0.0 then p(i).Speed# = 0.0
+                  endif
+                  if keystate(ControlKeys(PlayerOption(i)).Fire) AND timer() - LastFired(i) > 75 AND timer() - LastReloaded(i) > 1250
+                     if BulletsLeft(i,1) > 0
+                        fireBullet(i)
+                     else
+                        play sound 2
+                     endif
+                     LastFired(i) = timer()
+                  endif
+                  if keystate(ControlKeys(PlayerOption(i)).Reload) AND timer() - LastReloaded(i) > 250
+                     if BulletsLeft(i,2) > 0
+                        LastReloaded(i) = timer()
+                        play sound 3
+                        dec BulletsLeft(i,2)
+                        BulletsLeft(i,1) = 30
+                     endif
+                  endif
+               else
+                  ProcessAI(i)
+               endif
+            endif
+         next i
+
+
+
+
+
+         for i = 1 to 4
+            if p(i).Alive = 0
+               animateExplosion(i)
+            else
+               cellX = int(object position x(i) + 0.5)
+               cellZ = int(object position z(i) + 0.5)
+               HandleCollision(i, cellX, cellZ)
+               setScoreUV(i)
+               setHealthUV(i)
+
+               inc p(i).Angle#, p(i).dAngle# * frameTime# * 0.001
+               rotate object i, 0, p(i).Angle#, 0
+               move object i, p(i).Speed# * frameTime# * 0.001
+               inc p(i).Pitch#, p(i).Speed# * frameTime# * 0.5
+               rotate limb i, 0, p(i).Pitch#, 0, 0
+            endif
+
+
+
+            if p(i).Angle# < -180.0 then inc p(i).Angle#, 360.0 : inc p(i).CamAngle#, 360.0
+            if p(i).Angle# >  180.0 then dec p(i).Angle#, 360.0 : dec p(i).CamAngle#, 360.0
+
+            if p(i).Angle# - p(i).CamAngle# >  180.0 then inc p(i).CamAngle#, 360
+            if p(i).Angle# - p(i).CamAngle# < -180.0 then dec p(i).CamAngle#, 360
+
+            inc p(i).CamAngle#, (p(i).Angle# - p(i).CamAngle#) * frameTime# * 0.002
+
+
+
+            paste sprite 22, PanelOffsets#(i,1), PanelOffsets#(i,2)
+            for j = 1 to BulletsLeft(i,1)
+               paste sprite 20, BulletOffsets#(i,1), BulletOffsets#(i,2) + ((j-1) * bulletScale#)
+            next j
+            for j = 1 to BulletsLeft(i,2)
+               paste sprite 21, ClipOffsets#(i,1), ClipOffsets#(i,2) + ((j-1) * ClipScale#)
+            next j
+            paste sprite 23, HeartOffsets#(i,1),HeartOffsets#(i,2)
+         next i
+
+         gosub SHOW_MINI_MAPS
+         gosub MOVE_BULLETS
+
+         for i = 1 to 4
+            position camera i-1, object position x(i) - (sin(p(i).CamAngle#) * 0.75), 1.0, object position z(i) - (cos(p(i).CamAngle#) * 0.75)
+            point camera    i-1, object position x(i), object position y(i), object position z(i)
+         next i
+      endcase
+   endselect
+
+   for i = 1 to 15
+      powerupObj = 2000+i
+      turn object right powerupObj, frameTime# * 0.090
+      position object powerupObj, Powerups(i).Pos.x, (sin(timer() * 0.360)*0.05) + BALL_RADIUS + 0.1, Powerups(i).Pos.y
+   next i
+
+
+
+
+   ink 0, rgb(255,255,255)
+   box 0, (screen height() * 0.5) - 2, screen width(), (screen height() * 0.5) + 2
+   box (screen width() * 0.5) - 2, 0, (screen width() * 0.5) + 2, screen height()
+
+   sync
+loop
+
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+`*****************************
+`**                         **
+`**       PROCESS AI        **
+`**                         **
+`*****************************
+function ProcessAI(i)
+
+   cellX = int(object position x(i) + 0.5)
+   cellZ = int(object position z(i) + 0.5)
+   x# = cellX *1.0
+   z# = cellZ *1.0
+
+   GridTimes(i, cellX, cellZ) = timer()
+
+   TIMERSTORAGE=TIMER()
+
+   Choice = -1 : BestTime = -1
+
+   if Maze(cellX, cellZ).N = 0
+      Choice = 1
+      BestTime = TIMERSTORAGE - GridTimes(i, cellX, cellZ-1)
+      x# = cellX - object position x(i)
+      z# = cellZ - object position z(i) - 1.0
+   endif
+
+   if Maze(cellX, cellZ).S = 0
+      if (TIMERSTORAGE - GridTimes(i, cellX, cellZ+1)) > BestTime
+         Choice = 2
+         BestTime = TIMERSTORAGE - GridTimes(i, cellX, cellZ+1)
+         x# = cellX - object position x(i)
+         z# = cellZ - object position z(i) + 1.0
+      endif
+   endif
+
+   if Maze(cellX, cellZ).E = 0
+      if (TIMERSTORAGE - GridTimes(i, cellX+1, cellZ)) > BestTime
+         Choice = 3
+         BestTime = TIMERSTORAGE - GridTimes(i, cellX+1, cellZ)
+         x# = cellX - object position x(i) + 1.0
+         z# = cellZ - object position z(i)
+      endif
+   endif
+
+   if Maze(cellX, cellZ).W = 0
+      if (TIMERSTORAGE - GridTimes(i, cellX-1, cellZ)) > BestTime
+         Choice = 4
+         BestTime = TIMERSTORAGE - GridTimes(i, cellX-1, cellZ)
+         x# = cellX - object position x(i) - 1.0
+         z# = cellZ - object position z(i)
+      endif
+   endif
+
+   target# = atanfull(x#, z#)
+   p(i).Speed# = 0.5
+
+   if object exist(999)=0 then make object sphere 999, 0.25 :  : exclude object on 999
+   position object 999, object position x(i) + x#, 0.0, object position z(i) + z#
+
+
+   IF OBJECT EXIST(998)=0 THEN MAKE OBJECT SPHERE 998,0.25 : exclude object on 998
+
+   POSITION OBJECT 998, object position x(i), object position Y(i), object position Z(i)
+   POINT OBJECT 998, object position x(999) , OBJECT SIZE Y(I)/2, object position z(999)
+   p(i).Angle# = OBJECT ANGLE Y(998)
+
+   ink rgb(0,0,0), rgb(255,255,255)
+
+endfunction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+`*****************************
+`**                         **
+`**    SET SCORE DISPLAY    **
+`**                         **
+`*****************************
+function setScoreUV(i)
+   scr$ = str$(scores(i))
+
+   padoutScore:
+   if len(scr$) < 4 then scr$ = "0" + scr$ : goto padoutScore
+
+   col1# = val(mid$(scr$,1)) * 0.1
+   col2# = val(mid$(scr$,2)) * 0.1
+   col3# = val(mid$(scr$,3)) * 0.1
+   col4# = val(mid$(scr$,4)) * 0.1
+
+   CurrentUV#(i,1) = CurrentUV#(i,1) + ((col1# - CurrentUV#(i,1)) * frameTime# * 0.005)
+   CurrentUV#(i,2) = CurrentUV#(i,2) + ((col2# - CurrentUV#(i,2)) * frameTime# * 0.005)
+   CurrentUV#(i,3) = CurrentUV#(i,3) + ((col3# - CurrentUV#(i,3)) * frameTime# * 0.005)
+   CurrentUV#(i,4) = CurrentUV#(i,4) + ((col4# - CurrentUV#(i,4)) * frameTime# * 0.005)
+
+   SpriteObjs = (i-1) * 10
+
+   `Col1
+   set sprite texture coord SpriteObjs+100, 0, 0.0, CurrentUV#(i,1)
+   set sprite texture coord SpriteObjs+100, 1, 1.0, CurrentUV#(i,1)
+   set sprite texture coord SpriteObjs+100, 2, 0.0, CurrentUV#(i,1) + 0.1
+   set sprite texture coord SpriteObjs+100, 3, 1.0, CurrentUV#(i,1) + 0.1
+
+   `Col2
+   set sprite texture coord SpriteObjs+101, 0, 0.0, CurrentUV#(i,2)
+   set sprite texture coord SpriteObjs+101, 1, 1.0, CurrentUV#(i,2)
+   set sprite texture coord SpriteObjs+101, 2, 0.0, CurrentUV#(i,2) + 0.1
+   set sprite texture coord SpriteObjs+101, 3, 1.0, CurrentUV#(i,2) + 0.1
+
+   `Col3
+   set sprite texture coord SpriteObjs+102, 0, 0.0, CurrentUV#(i,3)
+   set sprite texture coord SpriteObjs+102, 1, 1.0, CurrentUV#(i,3)
+   set sprite texture coord SpriteObjs+102, 2, 0.0, CurrentUV#(i,3) + 0.1
+   set sprite texture coord SpriteObjs+102, 3, 1.0, CurrentUV#(i,3) + 0.1
+
+   `Col4
+   set sprite texture coord SpriteObjs+103, 0, 0.0, CurrentUV#(i,4)
+   set sprite texture coord SpriteObjs+103, 1, 1.0, CurrentUV#(i,4)
+   set sprite texture coord SpriteObjs+103, 2, 0.0, CurrentUV#(i,4) + 0.1
+   set sprite texture coord SpriteObjs+103, 3, 1.0, CurrentUV#(i,4) + 0.1
+
+endfunction
+
+
+
+
+
+
+
+
+
+`*****************************
+`**                         **
+`**    SET HEALTH DISPLAY   **
+`**                         **
+`*****************************
+function setHealthUV(i)
+   scr$ = str$(health(i))
+
+   padoutHealth:
+   if len(scr$) < 3then scr$ = "0" + scr$ : goto padoutHealth
+
+   col1# = val(mid$(scr$,1)) * 0.1
+   col2# = val(mid$(scr$,2)) * 0.1
+   col3# = val(mid$(scr$,3)) * 0.1
+
+   CurrentHealthUV#(i,1) = CurrentHealthUV#(i,1) + ((col1# - CurrentHealthUV#(i,1)) * frameTime# * 0.005)
+   CurrentHealthUV#(i,2) = CurrentHealthUV#(i,2) + ((col2# - CurrentHealthUV#(i,2)) * frameTime# * 0.005)
+   CurrentHealthUV#(i,3) = CurrentHealthUV#(i,3) + ((col3# - CurrentHealthUV#(i,3)) * frameTime# * 0.005)
+
+   SpriteObjs = (i-1) * 10
+
+   `Col1
+   set sprite texture coord SpriteObjs+200, 0, 0.0, CurrentHealthUV#(i,1)
+   set sprite texture coord SpriteObjs+200, 1, 1.0, CurrentHealthUV#(i,1)
+   set sprite texture coord SpriteObjs+200, 2, 0.0, CurrentHealthUV#(i,1) + 0.1
+   set sprite texture coord SpriteObjs+200, 3, 1.0, CurrentHealthUV#(i,1) + 0.1
+
+   `Col2
+   set sprite texture coord SpriteObjs+201, 0, 0.0, CurrentHealthUV#(i,2)
+   set sprite texture coord SpriteObjs+201, 1, 1.0, CurrentHealthUV#(i,2)
+   set sprite texture coord SpriteObjs+201, 2, 0.0, CurrentHealthUV#(i,2) + 0.1
+   set sprite texture coord SpriteObjs+201, 3, 1.0, CurrentHealthUV#(i,2) + 0.1
+
+   `Col3
+   set sprite texture coord SpriteObjs+202, 0, 0.0, CurrentHealthUV#(i,3)
+   set sprite texture coord SpriteObjs+202, 1, 1.0, CurrentHealthUV#(i,3)
+   set sprite texture coord SpriteObjs+202, 2, 0.0, CurrentHealthUV#(i,3) + 0.1
+   set sprite texture coord SpriteObjs+202, 3, 1.0, CurrentHealthUV#(i,3) + 0.1
+
+endfunction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+`*****************************
+`**                         **
+`**    GENERATE POWERUPS    **
+`**                         **
+`*****************************
+function GeneratePowerup(i)
+   powerObj = 2000+i
+   if object exist(powerObj) then delete object powerObj
+   Powerups(i).PowerupType = rnd(1)
+
+   generateCoord:
+   Powerups(i).Pos.x = rnd(M_WIDTH-1)+1
+   Powerups(i).Pos.y = rnd(M_HEIGHT-1)+1
+
+   if Powerups(i).Pos.x = int(object position x(1) + 0.5) AND Powerups(i).Pos.y = int(object position z(1) + 0.5) then goto generateCoord
+   if Powerups(i).Pos.x = int(object position x(2) + 0.5) AND Powerups(i).Pos.y = int(object position z(2) + 0.5) then goto generateCoord
+   if Powerups(i).Pos.x = int(object position x(3) + 0.5) AND Powerups(i).Pos.y = int(object position z(3) + 0.5) then goto generateCoord
+   if Powerups(i).Pos.x = int(object position x(4) + 0.5) AND Powerups(i).Pos.y = int(object position z(4) + 0.5) then goto generateCoord
+
+   for j = 1 to 15
+      if i <> j then if Powerups(i).Pos.x = Powerups(j).Pos.x AND Powerups(i).Pos.y = Powerups(j).Pos.y then goto generateCoord
+   next j
+
+   select Powerups(i).PowerupType
+      case 0
+         make object cube powerObj, BALL_RADIUS * 2.0
+         texture object powerObj, 22
+         set object light powerObj, 0
+      endcase
+
+      case 1
+         make object sphere powerObj, BALL_RADIUS * 2.0, 16, 16
+         color object powerObj, rgb(32,192,32)
+      endcase
+   endselect
+
+   position object powerObj, Powerups(i).Pos.x, BALL_RADIUS, Powerups(i).Pos.y
+   set object transparency powerObj, 3
+   set alpha mapping on powerObj, 75
+endfunction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+`*****************************
+`**                         **
+`**      MOVE BULLETS       **
+`**                         **
+`*****************************
+MOVE_BULLETS:
+for i = 10000 to 10500
+   if object exist(i)
+      position object i, object position x(i) + (sin(object angle y(i)-90) * frameTime#*0.0075), object position y(i), object position z(i) + (cos(object angle y(i)-90) * frameTime#*0.0075)
+      bulletColl = object collision(i,0)
+      if bulletColl > 0
+         delete object i
+         if bulletColl < 5
+            if health(bulletColl) > 0
+               dec health(bulletColl), 5
+               if health(bulletColl) <= 0 then makeDead(bulletColl)
+            endif
+         endif
+      endif
+   endif
+next i
+return
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+`*****************************
+`**                         **
+`**     DESTROY PLAYER      **
+`**                         **
+`*****************************
+function makeDead(i)
+   if p(i).Alive = 1
+      play sound 7
+      p(i).Alive = 0
+      p(i).Speed# = 0.0
+      p(i).DeathTime = timer()
+      p(i).CurrentFrame = 0
+      expObj = 500 + ((i-1) * 2)
+
+      make object plain       expObj, BALL_RADIUS*2, BALL_RADIUS*2
+      set object light        expObj, 0
+      texture object          expObj, 50
+      scale object texture    expObj, 0.25, 0.25
+      position object         expObj, object position x(i), object position y(i), object position z(i)
+      point object            expObj, object position x(i)+sin(p(i).Angle#), object position y(i), object position z(i)+cos(p(i).Angle#)
+      set object transparency expObj, 3
+
+      make object plain       expObj+1, BALL_RADIUS*2, BALL_RADIUS*2
+      set object light        expObj+1, 0
+      texture object          expObj+1, 50
+      scale object texture    expObj+1, 0.25, 0.25
+      position object         expObj+1, object position x(i), object position y(i), object position z(i)
+      point object            expObj+1, object position x(i)+sin(p(i).Angle#+90), object position y(i), object position z(i)+cos(p(i).Angle#+90)
+      set object transparency expObj+1, 3
+
+      set alpha mapping on i, 0
+      set object transparency i, 2
+   endif
+endfunction
+
+
+
+
+
+
+
+
+
+
+
+
+
+`*****************************
+`**                         **
+`**    ANIMATE EXPLOSION    **
+`**                         **
+`*****************************
+function animateExplosion(i)
+      expObj = 500 + ((i-1) * 2)
+      frame = (timer() - p(i).DeathTime) / 100
+      if timer() - p(i).DeathTime - 1000 > 0 then set alpha mapping on i ,((timer() - p(i).DeathTime-1000) / 6)
+
+      if frame <> p(i).CurrentFrame AND frame > 0
+         select frame
+            case 1,2,3, 5,6,7, 9,10,11, 13,14,15 : scroll object texture expObj,  0.25, 0.00 : scroll object texture expObj+1,  0.25, 0.00 : endcase
+            case 4,8,12                          : scroll object texture expObj, -0.75, 0.25 : scroll object texture expObj+1, -0.75, 0.25 : endcase
+
+            case 16
+               health(i) = 100
+               p(i).Alive = 1
+               show object i
+               set shading off i
+               set object transparency i, 0
+               delete object expObj
+               delete object expObj+1
+            endcase
+         endselect
+         p(i).CurrentFrame = frame
+      endif
+endfunction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+`*****************************
+`**                         **
+`**     FIRE NEW BULLET     **
+`**                         **
+`*****************************
+`i = player number
+function fireBullet(i)
+   if object exist(bulletObj) = 1 then freeBullet = 0 else freeBullet = 1
+
+   while freeBullet =0
+      if object exist(bulletObj)
+         inc bulletObj
+         if bulletObj > 10500 then bulletObj = 10000
+      else
+         freeBullet = 1
+      endif
+   endwhile
+
+   play sound 1
+
+   make object plain bulletObj, 0.1, 0.05
+   texture object bulletObj, 20
+   set object transparency bulletObj, 4
+   x# = object position x(i) + (sin(object angle y(i)) * (BALL_RADIUS + 0.175))
+   y# = object position y(i)
+   z# = object position z(i) + (cos(object angle y(i)) * (BALL_RADIUS + 0.175))
+   position object bulletObj, x#, y#, z#
+   point object bulletObj, x#, y#+1.0, z#
+   yrotate object bulletObj, object angle y(i) + 90.0
+
+   dec BulletsLeft(i, 1)
+endfunction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+`*****************************
+`**                         **
+`**      SHOW MINI MAPS     **
+`**                         **
+`*****************************
+SHOW_MINI_MAPS:
+   rotate sprite 1, -object angle y(1)
+   rotate sprite 2, -object angle y(2)
+   rotate sprite 3, -object angle y(3)
+   rotate sprite 4, -object angle y(4)
+
+   createMiniMap(overviewOffsetX#, overviewOffsetY#)
+   createMiniMap(overviewOffsetX# + (screen width()/2), overviewOffsetY#)
+   createMiniMap(overviewOffsetX#, overviewOffsetY# + (screen height()/2))
+   createMiniMap(overviewOffsetX# + (screen width()/2), overviewOffsetY# + (screen height()/2))
+return
+
+
+function createMiniMap(xOffset#, yOffset#)
+   paste sprite 10, xOffset#, yOffset#
+   paste sprite 1,  xOffset# + ((object position x(1)-0.5) * MAP_SCALE#), yOffset# + ((object position z(1)-0.5) * MAP_SCALE#)
+   paste sprite 2,  xOffset# + ((object position x(2)-0.5) * MAP_SCALE#), yOffset# + ((object position z(2)-0.5) * MAP_SCALE#)
+   paste sprite 3,  xOffset# + ((object position x(3)-0.5) * MAP_SCALE#), yOffset# + ((object position z(3)-0.5) * MAP_SCALE#)
+   paste sprite 4,  xOffset# + ((object position x(4)-0.5) * MAP_SCALE#), yOffset# + ((object position z(4)-0.5) * MAP_SCALE#)
+   for i = 1 to 15
+      paste sprite 5, xOffset# + ((Powerups(i).Pos.x-0.5) * MAP_SCALE#), yOffset# + ((Powerups(i).Pos.y-0.5) * MAP_SCALE#)
+   next i
+endfunction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+`*****************************
+`**                         **
+`**     PLAYER COLLISION    **
+`**                         **
+`*****************************
+`i = player
+function HandleCollision(i, cellX, cellZ)
+   pX# = object position x(i)
+   pY# = object position y(i)
+   pZ# = object position z(i)
+
+   if Maze(cellX, cellZ).N = 1
+      if object collision(i, MazeWallID(cellX, cellZ).N)
+         sX# = sin(p(i).Angle#)
+         sZ# = cos(p(i).Angle#)
+         if sZ# < 0.0
+            sZ# = -sZ#
+            p(i).Angle# = atanfull(sX#,sZ#)
+            p(i).Speed# = p(i).Speed# * 0.5
+            play sound 6
+         endif
+      endif
+   endif
+
+   if Maze(cellX, cellZ).S = 1
+      if object collision(i, MazeWallID(cellX, cellZ).S)
+         sX# = sin(p(i).Angle#)
+         sZ# = cos(p(i).Angle#)
+         if sZ# > 0.0
+            sZ# = -sZ#
+            p(i).Angle# = atanfull(sX#,sZ#)
+            p(i).Speed# = p(i).Speed# * 0.5
+            play sound 6
+         endif
+      endif
+   endif
+
+   if Maze(cellX, cellZ).E = 1
+      if object collision(i, MazeWallID(cellX, cellZ).E)
+         sX# = sin(p(i).Angle#)
+         sZ# = cos(p(i).Angle#)
+         if sX# > 0.0
+            sX# = -sX#
+            p(i).Angle# = atanfull(sX#,sZ#)
+            p(i).Speed# = p(i).Speed# * 0.5
+            play sound 6
+         endif
+      endif
+   endif
+
+   if Maze(cellX, cellZ).W = 1
+      if object collision(i, MazeWallID(cellX, cellZ).W)
+         sX# = sin(p(i).Angle#)
+         sZ# = cos(p(i).Angle#)
+         if sX# < 0.0
+            sX# = -sX#
+            p(i).Angle# = atanfull(sX#,sZ#)
+            p(i).Speed# = p(i).Speed# * 0.5
+            play sound 6
+         endif
+      endif
+   endif
+
+   `powerups
+   objCollided = object collision(i,0)
+   if objCollided > 1999
+      if objCollided < 2000 + array count (Powerups()) + 1
+         j = objCollided - 2000
+         select Powerups(j).PowerupType
+            case 0
+               if BulletsLeft(i, 2) < 4 then inc BulletsLeft(i, 2)
+               play sound 4
+            endcase
+
+            case 1
+               inc scores(i), 100
+               play sound 5
+            endcase
+         endselect
+         GeneratePowerup(j)
+      endif
+   endif
+endfunction
+
+
+
+
+
+
+
+
+
+
+`*******************************
+`**                           **
+`**      MAZE GENERATION      **
+`**                           **
+`*******************************
+GenerateMaze:
+while VisitedCells < TotalCells
+   Available(0) = 0
+   Available(1) = 0
+   Available(2) = 0
+   Available(3) = 0
+   found = 0
+   if currentCell.y > 1
+      tX = currentCell.x
+      tY = currentCell.y-1
+      if Maze(tx,ty).N = 1 AND Maze(tx,ty).S = 1 AND Maze(tx,ty).E = 1 AND Maze(tx,ty).W = 1
+         inc found
+         Available(0) = 1
+      endif
+   endif
+   if currentCell.y < M_HEIGHT
+      tX = currentCell.x
+      tY = currentCell.y+1
+      if Maze(tx,ty).N = 1 AND Maze(tx,ty).S = 1 AND Maze(tx,ty).E = 1 AND Maze(tx,ty).W = 1
+         inc found
+         Available(1) = 1
+      endif
+   endif
+   if currentCell.x > 1
+      tX = currentCell.x-1
+      tY = currentCell.y
+      if Maze(tx,ty).N = 1 AND Maze(tx,ty).S = 1 AND Maze(tx,ty).E = 1 AND Maze(tx,ty).W = 1
+         inc found
+         Available(2) = 1
+      endif
+   endif
+   if currentCell.x < M_WIDTH
+      tX = currentCell.x+1
+      tY = currentCell.y
+      if Maze(tx,ty).N = 1 AND Maze(tx,ty).S = 1 AND Maze(tx,ty).E = 1 AND Maze(tx,ty).W = 1
+         inc found
+         Available(3) = 1
+      endif
+   endif
+   if found > 0
+      choice = rnd(3)
+      while Available(choice) = 0
+         choice = rnd(3)
+      endwhile
+
+      select choice
+         `North
+         case 0
+            Maze(currentCell.x, currentCell.y).N = 0
+            Maze(currentCell.x, currentCell.y-1).S = 0
+            add to stack CellStack()
+            CellStack() = currentCell
+            dec currentCell.y
+         endcase
+
+         `South
+         case 1
+            Maze(currentCell.x, currentCell.y).S = 0
+            Maze(currentCell.x, currentCell.y+1).N = 0
+            add to stack CellStack()
+            CellStack() = currentCell
+            inc currentCell.y
+         endcase
+
+         `West
+         case 2
+            Maze(currentCell.x, currentCell.y).W = 0
+            Maze(currentCell.x-1, currentCell.y).E = 0
+            add to stack CellStack()
+            CellStack() = currentCell
+            dec currentCell.x
+         endcase
+
+         `East
+         case 3
+            Maze(currentCell.x, currentCell.y).E = 0
+            Maze(currentCell.x+1, currentCell.y).W = 0
+            add to stack CellStack()
+            CellStack() = currentCell
+            inc currentCell.x
+         endcase
+      endselect
+      inc VisitedCells
+   else
+      currentCell = CellStack()
+      remove from stack CellStack()
+   endif
+endwhile
+return
+
+
+
+
+
+
+
+
+`*******************************
+`**                           **
+`**       MAZE CREATION       **
+`**                           **
+`*******************************
+RenderMaze3D:
+   dim Maze3D(M_WIDTH, M_HEIGHT) as mazeCell
+   for i = 1 to M_WIDTH
+      for j = 1 to M_HEIGHT
+         Maze3D(i,j).N = 0
+         Maze3D(i,j).S = 0
+         Maze3D(i,j).E = 0
+         Maze3D(i,j).W = 0
+      next j
+   next i
+   objCountNS = 20000
+   objCountEW = 30000
+   load image "GFX\bricks.bmp", 5
+   for i = 1 to M_WIDTH
+      for j = 1 to M_HEIGHT
+         `NORTH
+         if Maze(i,j).N = 1 AND Maze3D(i,j).N = 0
+            inc objCountNS
+            make object box objCountNS, 1, 0.5, 0.1
+            position object objCountNS, i, 0.25, j-0.5
+            texture object objCountNS, 5
+            set object emissive objCountNS, rgb(64, 16, 16)
+            scale object texture objCountNS, 2.0, 1.0
+            set object collision to boxes objCountNS
+
+            Maze3D(i,j).N = 1
+            MazeWallID(i,j).N = objCountNS
+            if j > 1 then Maze3D(i,j-1).S = 1 : MazeWallID(i,j-1).S = objCountNS
+         endif
+
+         `SOUTH
+         if Maze(i,j).S = 1 AND Maze3D(i,j).S = 0
+            inc objCountNS
+            make object box objCountNS, 1, 0.5, 0.1
+            position object objCountNS, i, 0.25, j+0.5
+            texture object objCountNS, 5
+            set object emissive objCountNS, rgb(64, 16, 16)
+            scale object texture objCountNS, 2.0, 1.0
+            set object collision to boxes objCountNS
+
+            Maze3D(i,j).S = 1
+            MazeWallID(i,j).S = objCountNS
+            if j < M_HEIGHT then Maze3D(i,j+1).N = 1 : MazeWallID(i,j+1).N = objCountNS
+         endif
+
+         `WEST
+         if Maze(i,j).W = 1 AND Maze3D(i,j).W = 0
+            inc objCountEW
+            make object box objCountEW, 0.1, 0.5, 1
+            position object objCountEW, i-0.5, 0.25, j
+            texture object objCountEW, 5
+            set object emissive objCountEW, rgb(64, 16, 16)
+            scale object texture objCountEW, 2.0, 1.0
+            set object collision to boxes objCountEW
+
+            Maze3D(i,j).W = 1
+            MazeWallID(i,j).W = objCountEW
+            if i > 1 then Maze3D(i-1,j).E = 1 : MazeWallID(i-1,j).E = objCountEW
+         endif
+
+         `EAST
+         if Maze(i,j).E = 1 AND Maze3D(i,j).E = 0
+            inc objCountEW
+            make object box objCountEW, 0.1, 0.5, 1
+            position object objCountEW, i+0.5, 0.25, j
+            texture object objCountEW, 5
+            set object emissive objCountEW, rgb(64, 16, 16)
+            scale object texture objCountEW, 2.0, 1.0
+            set object collision to boxes objCountEW
+
+            Maze3D(i,j).E = 1
+            MazeWallID(i,j).E = objCountEW
+            if i < M_WIDTH then Maze3D(i+1,j).W = 1 : MazeWallID(i+1,j).W = objCountEW
+         endif
+      next j
+   next i
+
+   undim Maze3D()
+
+   load image "GFX\grass.bmp", 6
+   sizeX# = M_WIDTH + 2.0
+   sizeZ# = M_HEIGHT + 2.0
+   make object plain 40001, sizeX#, sizeZ#
+   position object 40001, sizeX#*0.5, 0.0, sizeZ#*0.5
+   point object 40001, sizeX#*0.5, 1.0,  sizeZ#*0.5
+   texture object 40001, 6
+   set object emissive 40001, rgb(0,128,0)
+   scale object texture 40001, sizeX#*1.5, sizeZ#*1.5
+
+   IMGX# = M_WIDTH  * MAP_SCALE#
+   IMGY# = M_HEIGHT * MAP_SCALE#
+
+   SCALEX# = (IMGX#-1) / M_WIDTH
+   SCALEY# = (IMGY#-1) / M_HEIGHT
+
+   for i = 1 to M_WIDTH
+      for j = 1 to M_HEIGHT
+         x1 = (i-1) * SCALEX#
+         x2 =  i    * SCALEX#
+         y1 = (j-1) * SCALEY#
+         y2 =  j    * SCALEY#
+
+         if Maze(i,j).N = 1 then line x1, y1, x2, y1
+         if Maze(i,j).S = 1 then line x1, y2, x2, y2
+         if Maze(i,j).E = 1 then line x2, y1, x2, y2
+         if Maze(i,j).W = 1 then line x1, y1, x1, y2
+      next j
+   next i
+
+   get image 7, 0, 0, IMGX#, IMGY#
+return
+
+
+
+
+
+
+
+
+
+
+
+
+function makeWindow(width#, height#, obj)
+   load image "GFX\windowBack.png", 80
+   if object exist(obj) then delete object obj
+   if mesh exist(1) then delete mesh 1
+   if mesh exist(2) then delete mesh 2
+   if mesh exist(3) then delete mesh 3
+
+   make object cube  obj, 1
+   make mesh from object 1, obj
+
+   make object plain obj+1, width#, height#
+   scale object texture obj+1, (width# / 2.0), (height# / 2.0)
+   make mesh from object 2, obj+1
+   delete object obj+1
+
+   make object sphere obj+2, 0.25
+   make mesh from object 3, obj+2
+   delete object obj+2
+
+
+   `top
+   scale limb  obj, 0, 10, height# * 100.0, 10
+   offset limb obj, 0, -width#*0.5, 0, 0
+   scale limb texture obj, 0, 0.1, (height#)
+
+   `right
+   add limb    obj, 1, 1
+   scale limb  obj, 1, 10, height# * 100.0, 10
+   offset limb obj, 1, width#*0.5, 0, 0
+   scale limb texture obj, 1, 0.1, (height#)
+
+   `top
+   add limb    obj, 2, 1
+   scale limb  obj, 2, 10, width# *100.0, 10
+   offset limb obj, 2, 0, height# * 0.5, 0
+   rotate limb obj, 2, 0, 0, 90
+   scale limb texture obj, 2, 0.1, (width#)
+
+   `bottom
+   add limb    obj, 3, 1
+   scale limb  obj, 3, 10, width# *100.0, 10
+   offset limb obj, 3, 0, height# * -0.5, 0
+   rotate limb obj, 3, 0, 0, 90
+   scale limb texture obj, 3, 0.1, (width#)
+
+   `plain
+   add limb obj, 4, 2
+   add limb obj, 5, 2
+   rotate limb obj, 5, 0, 180, 0
+
+   `Top Left
+   add limb    obj, 6, 3
+   offset limb obj, 6, width# * -0.5, height# *  0.5, 0
+
+   `Top Right
+   add limb    obj, 7, 3
+   offset limb obj, 7, width# *  0.5, height# *  0.5, 0
+
+   `Bottom Left
+   add limb    obj, 8, 3
+   offset limb obj, 8, width# * -0.5, height# * -0.5, 0
+
+   `Bottom Right
+   add limb    obj, 9, 3
+   offset limb obj, 9, width# *  0.5, height# * -0.5, 0
+
+
+   texture object obj, 80
+   set object transparency obj, 3
+
+   lock object on obj
+   set object light obj, 0
+   set object collision off obj
+endfunction
+
+
+
+
+function CubicBezier(A#, B#, C#, D#, T#)
+   invT# = 1.0 - T#
+   result# = (A# * invT# * invT# * invT#) + (3.0 * B# * invT# * invT# * T#) + (3.0 * C# * invT# * T# * T#) + (D# * T# * T# * T#)
+endfunction result#

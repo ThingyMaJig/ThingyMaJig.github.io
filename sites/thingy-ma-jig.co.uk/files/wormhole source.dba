@@ -1,0 +1,173 @@
+set display mode 1280, 1024, 32
+sync on
+sync rate 0
+backdrop on
+color backdrop 0
+randomize timer()
+set camera range 0.1, 200
+hide mouse
+
+set ambient light 80
+hide light 0
+
+`Constants
+#constant TEXTURE_X 1024
+#constant TEXTURE_Y 1024
+#constant TRANSPARENCY_MASK 0x55FFFFFF
+#constant STAR_CHANCE_PERCENT 98
+#constant WORMHOLE_LENGTH 200
+#constant WORMHOLE_DIAMETER 2
+#constant CAM_MAX_ANGLE 45.0
+
+
+`Types
+Type Coord
+   x#
+   y#
+   z#
+EndType
+
+
+
+
+
+`Make the green texture with stars
+make memblock 1, (3+(TEXTURE_X*TEXTURE_X))*4
+write memblock dword 1, 0, TEXTURE_X
+write memblock dword 1, 4, TEXTURE_Y
+write memblock dword 1, 8, 32
+col as dword
+for y = 0 to TEXTURE_Y-1
+   for x = 0 to TEXTURE_X-1
+      if rnd(100) > STAR_CHANCE_PERCENT
+         write memblock dword 1, 12 + ((x + (y*TEXTURE_X))*4), 0x99FFFFFF
+      else
+         i# = (sin(x * 1800.0 / TEXTURE_X)+1.0)*0.5
+         col = rgb(0, i# * 240.0, 0) && TRANSPARENCY_MASK
+         write memblock dword 1, 12 + ((x + (y*TEXTURE_X))*4), col
+      endif
+   next x
+next y
+make image from memblock 1, 1
+delete memblock 1
+
+
+`Make the red texture with no stars
+make memblock 1, (3+(TEXTURE_X*TEXTURE_X))*4
+write memblock dword 1, 0, TEXTURE_X
+write memblock dword 1, 4, TEXTURE_Y
+write memblock dword 1, 8, 32
+col as dword
+for y = 0 to TEXTURE_Y-1
+   for x = 0 to TEXTURE_X-1
+      i# = (sin(x * 1440.0 / TEXTURE_X)+1.0)*0.5
+      col = rgb(i# * 240.0, 0, 0) && TRANSPARENCY_MASK
+      write memblock dword 1, 12 + ((x + (y*TEXTURE_X))*4), col
+   next x
+next y
+make image from memblock 2, 1
+delete memblock 1
+
+
+`Make the blue texture with no stars
+make memblock 1, (3+(TEXTURE_X*TEXTURE_X))*4
+write memblock dword 1, 0, TEXTURE_X
+write memblock dword 1, 4, TEXTURE_Y
+write memblock dword 1, 8, 32
+col as dword
+for y = 0 to TEXTURE_Y-1
+   i# = (sin(y * 1440.0 / TEXTURE_Y)+1.0)*0.5
+   col = rgb(0, 0, i# * 240.0) && TRANSPARENCY_MASK
+   for x = 0 to TEXTURE_X-1
+      write memblock dword 1, 12 + ((x + (y*TEXTURE_X))*4), col
+   next x
+next y
+make image from memblock 3, 1
+delete memblock 1
+
+
+
+
+autocam off
+
+`Make inner wormhole
+make object cylinder 1, -WORMHOLE_DIAMETER
+scale object 1, 100, 100.0 * (WORMHOLE_LENGTH / WORMHOLE_DIAMETER), 100
+position object 1, 0, WORMHOLE_LENGTH*0.5, 0
+texture object 1, 1
+set object transparency 1, 3
+
+`Make outer hole
+make object cylinder 2, -WORMHOLE_DIAMETER*1.2
+scale object 2, 100, 100.0 * (WORMHOLE_LENGTH / WORMHOLE_DIAMETER), 100
+position object 2, 0, WORMHOLE_LENGTH*0.6, 0
+texture object 2, 2
+set object transparency 2, 3
+
+
+`Make middle hole
+make object cylinder 3, -WORMHOLE_DIAMETER*1.1
+scale object 3, 100, 100.0 * (WORMHOLE_LENGTH / WORMHOLE_DIAMETER), 100
+position object 3, 0, WORMHOLE_LENGTH*0.55, 0
+texture object 3, 3
+set object transparency 3, 3
+
+
+
+
+
+
+
+
+
+position camera 0, 1, 0
+
+
+`Wormhole variables
+speed# = 0.0
+targetSpeed# = 1.0
+
+`Camera Angle Variables
+CameraAngle as Coord
+CameraAngle.x# = 0.0
+CameraAngle.y# = 0.0
+CameraAngle.z# = 0.0
+
+
+frameTime# = 1.0
+startTime = timer()
+`The for loop trick is a hack to squeeze out a few more FPS
+for i = 0 to 1
+   frameTime# = (frameTime# * 0.8) + ((timer() - startTime) * 0.2)
+   startTime = timer()
+
+   `Change the speed based on the mouse wheel
+   mousewheel = mousemovez()
+   if mousewheel > 0 then inc targetSpeed#, frameTime# * 0.01 else if mousewheel < 0 then dec targetSpeed#, frameTime# * 0.01
+   speed# = curvevalue(targetSpeed#, speed#, 1000.0/frameTime#)
+
+   `If pressing "s" show framerate
+   if keystate(31) then text 0,0, "fps: " + str$(screen fps())
+
+   `Scroll the tunnel textures
+   scroll object texture 1, frameTime# * 0.00025, frameTime# * 0.0001 * speed#
+   scroll object texture 2, frameTime# * 0.0002 * speed#, 0
+   scroll object texture 3, 0, frameTime# * 0.0002 * speed#
+
+   `wobble the camera
+   inc CameraAngle.z#, frameTime# * 0.045
+   inc CameraAngle.y#, frameTime# * 0.090
+   rotate camera 270, sin(CameraAngle.y#) * CAM_MAX_ANGLE, sin(CameraAngle.z#) * CAM_MAX_ANGLE
+
+   `update
+   if escapekey() then end
+   fastsync
+
+   `Screenshot
+   if spacekey()
+      get image 999, 0, 0, screen width(), screen height(), 1
+      save image "screenshot-" + str$(timer()) + ".bmp", 999
+      delete image 999
+   endif
+   i = 0
+next i
