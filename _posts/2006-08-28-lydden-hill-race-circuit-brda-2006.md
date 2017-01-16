@@ -1,0 +1,34 @@
+---
+excerpt: "<p>For those who dont know, <a title=\"Lydden Hill GoogleMap Link\" href=\"http://maps.google.co.uk/maps?f=q&hl=en&sll=51.177971,1.188669&sspn=0.01738,0.054245&q=Lydden+Race+Circuit&ie=UTF8&cid=51177971,1188669,17166188367421596284&li=lmd&z=14&om=1&iwloc=A\">Lydden
+  Hill</a> is a circuit located near Canterbury in the south-east of England (UK).
+  They host many events, but the one I'm interested in is called <strong><a href=\"http://www.rallycrossuk.com/\"
+  title=\"BRDA Rally Cross Site\">Lydden Hill BRCC 2006 meeting</a></strong>. <a href=\"http://www.rallycrossuk.com/circuits/lydden.html\"
+  title=\"Lydden History\">Lydden</a> was the first circuit to ever host a Rally Cross
+  meeting - its where it was born</p>\r\n"
+categories:
+- photos
+- days out
+layout: post
+title: Lydden Hill Race Circuit BRDA 2006
+created: 1156800373
+permalink: blog/28-08-06/lydden-hill-august-2006
+---
+<p>For those who dont know, <a title="Lydden Hill GoogleMap Link" href="http://maps.google.co.uk/maps?f=q&hl=en&sll=51.177971,1.188669&sspn=0.01738,0.054245&q=Lydden+Race+Circuit&ie=UTF8&cid=51177971,1188669,17166188367421596284&li=lmd&z=14&om=1&iwloc=A">Lydden Hill</a> is a circuit located near Canterbury in the south-east of England (UK). They host many events, but the one I'm interested in is called <strong><a href="http://www.rallycrossuk.com/" title="BRDA Rally Cross Site">Lydden Hill BRCC 2006 meeting</a></strong>. <a href="http://www.rallycrossuk.com/circuits/lydden.html" title="Lydden History">Lydden</a> was the first circuit to ever host a Rally Cross meeting - its where it was born</p>
+<!--break-->
+<p>Now, Rally Cross has grown to have many "leagues". Races can be anything from very young drivers in mini's (which is a LOT of fun to watch) up to awe inspiring Super Cars, such as Lawrence Gibson's Metro 6r4 - which, unfortunately, did not do so well today.</p>
+<p>The day started off cloudy and started to get sunny as we arrived - but the day's weather never settled. In fact, by about 5pm the weather had turned (for the third time) into what I can only describe as monsoon conditions (bear in mind, this is the southern parts of the UK!) for which nobody was prepared. We'd missed the first round when we arrived, however the racing was excelent.</p>
+<p>To give you an idea of how hard the rain was - this is a photo of one of the cars after a race which took place just after the second downpour&hellip;<br/>
+<a class="imagefield-fancybox" rel="lydden-gallery" href="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a1.jpg" title="Dirty Car!"><img src="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a1.thumbnail.jpg" alt="Dirty Car Thumbnail" /></a></p>
+<p>The racing continued - not always sticking to the "non-contact-sport" rule&hellip;<br/>
+<a class="imagefield-fancybox" rel="lydden-gallery" href="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a2.jpg" title="Door to Door Racing!"><img src="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a2.thumbnail.jpg" alt="Door to Door Racing Thumbnail" /></a></p>
+<p>Inevitably, there were a few accidents, however the worst was by far was <strong>Lawrence Gibson</strong>'s. It started with a fairly innocent use of the grass on the exit of <em>Chessons Drift</em> (a difficult corner as the exit is also a transition from dirt to tarmac, which unsettles the car) - however this caused the car to oversteer when the rear lost grip. Gibson, unable to correct ended up getting the rear tagged by the tyre wall which turned the front into the tyres. This then caused his car to flip at least once (it all happened very quickly) and it ended up on its roof. Gibson was lucky not to have a followup accident when the third place driver, who was not too far behind (I think this was <strong>Terry Briggs</strong>), only just managed to stop his car feet from the upturned 6r4 after nearly losing control himself&hellip;<br/>
+<a class="imagefield-fancybox" rel="lydden-gallery" href="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a3.jpg" title="Briggs checks on Gibson"><img src="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a3.thumbnail.jpg" alt="Briggs checks on Gibson Thumbnail" /></a> <a class="imagefield-fancybox" href="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a4.jpg" title="Post Accident Cleanup"><img src="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a4.thumbnail.jpg" alt="Post Accident Cleanup Thumbnail" /></a></p>
+<p>This was one of the two occasions (out of about 52 races) which warrented a red flag situation. The Lydden Hill marshals, medical team and everyone else involved were incredibly quick to assist and in very little time Gibson was taken off in an ambulance and <a href="/blog/images/lydden-autumn-2006/post-accident-cleanup" title="Post accident cleanup">the track cleanup began</a></p>
+<p>After popping down to the pits, the car was out for people to see. As it turned out, Gibson was fine apart from a little shock and brusing (from what I heard) however his car was not in the best of shape&hellip;<br>
+<a class="imagefield-fancybox" rel="lydden-gallery" href="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a5.jpg" title="Rear View"><img src="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a5.thumbnail.jpg" alt="Rear View Thumbnail" /></a> <a class="imagefield-fancybox" rel="lydden-gallery" href="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a6.jpg" title="Front View"><img src="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a6.thumbnail.jpg" alt="Front View Thumbnail" /></a></p>
+<p>Throughout the day, the mini's continued to provide entertainment with battles for position often getting this close&hellip;<br/>
+<a class="imagefield-fancybox" rel="lydden-gallery" href="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a7.jpg" title="Door to Door anyone?"><img src="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a7.thumbnail.jpg" alt="Mini Entertainment" /></a></p>
+<p>Finally, here are two photo's from the last races I saw that day (Supermodified B Finals) before the monsoon came in. After that we decided we were so soaked we'd rather go home that get hyperthermia (we were littlerally 100% soaked&hellip; would have probably been drier to jump into a swimming pool).<br/>
+<a class="imagefield-fancybox" rel="lydden-gallery" href="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a8.jpg" title="Supermodified B Final 1"><img src="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a8.thumbnail.jpg" alt="Supermodified B Final 1 Thumbnail" /></a> <a class="imagefield-fancybox" rel="lydden-gallery" href="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a9.jpg" title="Supermodified B Final 2"><img src="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a9.thumbnail.jpg" alt="Supermodified B Final 2 Thumbnail" /></a> 
+</p>
+<p>Anywho - if you have any photo's from the day on your site - please let me know, I'd love to see some!</p>

@@ -1,0 +1,6 @@
+# timezone: Europe/London
+lsi: true
+port: 9000
+host: 127.0.0.1
+theme: minima
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile']
