@@ -12,7 +12,7 @@ categories:
 - programming
 - drupal
 - announcement
-layout: post
+layout: blog
 title: Drupal gets a $100,000 injection thanks to Google!
 created: 1176403204
 permalink: blog/12-04-2007/drupal-gets-a-100-000-injection-thanks-for-google

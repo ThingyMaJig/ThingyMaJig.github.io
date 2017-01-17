@@ -14,7 +14,7 @@ categories:
 - linux
 - howto
 - geek
-layout: post
+layout: blog
 title: SVN + NFS = svn nfs cant get exclusive lock
 created: 1227610935
 permalink: blog/25-11-2008/svn-nfs-svn-nfs-cant-get-exclusive-lock

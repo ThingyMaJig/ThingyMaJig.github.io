@@ -4,7 +4,7 @@ categories:
 - howto
 - code
 - tips
-layout: post
+layout: blog
 title: Thingy Ma Jig - Now brought to you by Drupal 7
 created: 1295213632
 permalink: blog/16-01-2011/thingy-ma-jig-now-brought-to-you-by-drupal-7

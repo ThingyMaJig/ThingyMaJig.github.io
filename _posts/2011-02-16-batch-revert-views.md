@@ -3,7 +3,7 @@ categories:
 - drupal
 - code
 - tips
-layout: post
+layout: blog
 title: Batch Revert Views
 created: 1297856010
 permalink: blog/16-02-2011/batch-revert-views

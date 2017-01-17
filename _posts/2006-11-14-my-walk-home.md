@@ -9,7 +9,7 @@ categories:
 - photos
 - k800i
 - cool
-layout: post
+layout: blog
 title: My walk home...
 created: 1163463262
 permalink: blog/14-11-2006/my-walk-home

@@ -9,7 +9,7 @@ excerpt: "<p>Well I'm back home - fortunately my flight was better leaving the U
 categories:
 - drupal
 - days out
-layout: post
+layout: blog
 title: Yahoo OSCMS Summit 2007 Summary
 created: 1174824998
 permalink: blog/25-03-2007/yahoo-oscms-summit-2007-summary

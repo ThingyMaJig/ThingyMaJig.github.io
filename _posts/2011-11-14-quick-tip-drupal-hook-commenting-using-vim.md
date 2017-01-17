@@ -3,7 +3,7 @@ categories:
 - vim
 - drupal
 - programming
-layout: post
+layout: blog
 title: 'Quick Tip: Drupal Hook Commenting Using Vim'
 created: 1321293052
 permalink: blog/14-11-2011/quick-tip-drupal-hook-commenting-using-vim

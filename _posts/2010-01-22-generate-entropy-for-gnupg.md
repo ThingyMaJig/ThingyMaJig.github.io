@@ -7,7 +7,7 @@ categories:
 - security
 - linux
 - geek
-layout: post
+layout: blog
 title: Generate Entropy for GnuPG
 created: 1264164770
 permalink: blog/22-01-2010/generate-entropy-gnupg

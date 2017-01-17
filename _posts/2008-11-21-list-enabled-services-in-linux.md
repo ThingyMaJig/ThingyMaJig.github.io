@@ -6,7 +6,7 @@ categories:
 - linux
 - howto
 - geek
-layout: post
+layout: blog
 title: List enabled services in Linux
 created: 1227289061
 permalink: blog/21-11-2008/list-enabled-services-linux

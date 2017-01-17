@@ -8,7 +8,7 @@ categories:
 - seo
 - geek
 - drupal
-layout: post
+layout: blog
 title: Every blog needs a facebook page!
 created: 1205793507
 permalink: blog/17-03-2008/every-blog-needs-a-facebook-page

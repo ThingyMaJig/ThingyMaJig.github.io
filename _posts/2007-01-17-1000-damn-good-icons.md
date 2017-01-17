@@ -13,7 +13,7 @@ categories:
 - free
 - design
 - cool
-layout: post
+layout: blog
 title: 1000 Damn good icons!
 created: 1169031201
 permalink: blog/17-01-2007/1000-damn-good-icons

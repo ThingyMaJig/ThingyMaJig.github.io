@@ -12,7 +12,7 @@ categories:
 - review
 - drupal
 - announcement
-layout: post
+layout: blog
 title: 'Site Launch: Teaching Expertise'
 created: 1164904471
 permalink: blog/30-11-2006/site-launch-teaching-expertise

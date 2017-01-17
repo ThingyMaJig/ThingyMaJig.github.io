@@ -10,7 +10,7 @@ categories:
 - geek
 - doctor who
 - announcement
-layout: post
+layout: blog
 title: New Dr who is Matt Smith
 created: 1231005516
 permalink: blog/03-01-2009/new-dr-who-matt-smith

@@ -8,7 +8,7 @@ categories:
 - howto
 - drupal
 - cool
-layout: post
+layout: blog
 title: Ordering Menu Items Alphabetically
 created: 1167740153
 permalink: blog/02-01-2007/ordering-menu-items-alphabetically

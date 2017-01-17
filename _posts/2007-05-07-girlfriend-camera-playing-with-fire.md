@@ -10,7 +10,7 @@ categories:
 - flickr
 - eos 400d
 - cool
-layout: post
+layout: blog
 title: Girlfriend + Camera = playing with fire!
 created: 1178501134
 permalink: blog/07-05-2007/girlfriend-camera-playing-with-fire

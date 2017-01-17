@@ -10,7 +10,7 @@ excerpt: "<p>Just over 2 weeks since we <a title=\"Photoshop Tennis - Drupal Wal
 categories:
 - drupal
 - design
-layout: post
+layout: blog
 title: Photshop Tennis - Round 3 complete
 created: 1199293393
 permalink: blog/02-01-2008/photshop-tennis-round-3-complete

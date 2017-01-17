@@ -13,7 +13,7 @@ categories:
 - mobile phone
 - free
 - cool
-layout: post
+layout: blog
 title: Free Nokia N95 Themes
 created: 1186131905
 permalink: blog/03-08-2007/free-nokia-n95-themes

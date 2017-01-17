@@ -11,7 +11,7 @@ categories:
 - howto
 - hardware
 - geek
-layout: post
+layout: blog
 title: Upgrading Netgear DG834PN
 created: 1223982902
 permalink: blog/14-10-2008/upgrading-netgear-dg834pn

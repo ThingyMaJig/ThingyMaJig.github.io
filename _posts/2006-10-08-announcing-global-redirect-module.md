@@ -10,7 +10,7 @@ categories:
 - programming
 - drupal
 - announcement
-layout: post
+layout: blog
 title: 'Announcing: Global Redirect Module'
 created: 1160265860
 permalink: blog/08-10-2006/my-first-drupal-module

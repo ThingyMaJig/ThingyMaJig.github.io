@@ -8,7 +8,7 @@ categories:
 - miscellaneous
 - free
 - cool
-layout: post
+layout: blog
 title: Very cool illusion
 created: 1177336668
 permalink: blog/23-04-2007/very-cool-illusion

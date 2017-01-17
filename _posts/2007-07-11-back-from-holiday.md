@@ -8,7 +8,7 @@ categories:
 - photos
 - miscellaneous
 - days out
-layout: post
+layout: blog
 title: Back from Holiday!
 created: 1184148548
 permalink: blog/11-07-2007/back-from-holiday

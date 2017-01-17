@@ -3,7 +3,7 @@ categories:
 - drupal
 - new relic
 - greasemonkey
-layout: post
+layout: blog
 title: Forcing New Relic into Kiosk Mode
 created: 1331305531
 permalink: blog/09-03-2012/forcing-new-relic-into-kiosk-mode

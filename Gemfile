@@ -10,5 +10,7 @@ group :jekyll_plugins do
     gem 'sequel'
     gem 'mysql'
 
-    gem "minima"
+    gem "jekyll-assets"
 end
+
+gem 'bootstrap-sass'

@@ -6,7 +6,7 @@ categories:
 - websites
 - cool
 - review
-layout: post
+layout: blog
 title: Really cool HTML Graph!
 created: 1160345416
 permalink: blog/08-10-2006/html-graph-visual-representation

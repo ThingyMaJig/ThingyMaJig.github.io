@@ -15,7 +15,7 @@ categories:
 - howto
 - geek
 - drupal
-layout: post
+layout: blog
 title: Getting the most out of Fedora Core 4
 created: 1190993270
 permalink: blog/28-09-2007/getting-the-most-out-of-fedora-core-4

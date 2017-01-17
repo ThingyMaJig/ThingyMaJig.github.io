@@ -10,7 +10,7 @@ categories:
 - geek
 - free
 - cool
-layout: post
+layout: blog
 title: Drop all tables in a MySQL database
 created: 1160474229
 permalink: blog/10-10-2006/mysql-drop-all-tables

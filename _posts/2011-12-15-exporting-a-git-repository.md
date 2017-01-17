@@ -3,7 +3,7 @@ categories:
 - drupal
 - git
 - webdev
-layout: post
+layout: blog
 title: Exporting a Git Repository
 created: 1323965647
 permalink: blog/15-12-2011/exporting-a-git-repository

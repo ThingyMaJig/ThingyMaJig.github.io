@@ -13,7 +13,7 @@ categories:
 - dark basic pro
 - cool
 - announcement
-layout: post
+layout: blog
 title: Pongis - a new game I made!
 created: 1171934035
 permalink: blog/20-02-2007/pongis

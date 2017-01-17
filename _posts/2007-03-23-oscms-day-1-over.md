@@ -6,7 +6,7 @@ categories:
 - photos
 - drupal
 - days out
-layout: post
+layout: blog
 title: OSCMS Day 1 - over!
 created: 1174610809
 permalink: blog/22-03-2007/oscms-day-1-over

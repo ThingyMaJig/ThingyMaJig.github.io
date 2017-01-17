@@ -8,7 +8,7 @@ excerpt: "<p>The site has recently had a few updates&hellip;</p>\r\n<ul>\r\n<li>
 categories:
 - announcement
 - websites
-layout: post
+layout: blog
 title: Site updates
 created: 1163465288
 permalink: blog/14-11-2006/site-updates

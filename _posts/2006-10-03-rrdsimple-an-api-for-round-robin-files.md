@@ -8,7 +8,7 @@ categories:
 - software
 - review
 - linux
-layout: post
+layout: blog
 title: RRD::Simple - an API for Round Robin Files
 created: 1159887585
 permalink: blog/03-10-2006/rrdtool-graphing-loadavg-rrdsimple

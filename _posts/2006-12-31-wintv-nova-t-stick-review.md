@@ -10,7 +10,7 @@ categories:
 - tv
 - review
 - hardware
-layout: post
+layout: blog
 title: WinTV Nova-T Stick Review
 created: 1167523406
 permalink: blog/31-12-2006/wintv-nova-t-stick-review

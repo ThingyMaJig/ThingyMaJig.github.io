@@ -12,7 +12,7 @@ categories:
 - video
 - geek
 - cool
-layout: post
+layout: blog
 title: The Web is Us/ing Us
 created: 1176067951
 permalink: blog/08-04-2007/the-web-is-us-ing-us

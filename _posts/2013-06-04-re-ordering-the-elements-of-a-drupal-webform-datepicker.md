@@ -2,7 +2,7 @@
 categories:
 - drupal
 - howto
-layout: post
+layout: blog
 title: Re-ordering the elements of a Drupal Webform Datepicker
 created: 1370339182
 permalink: blog/04-06-2013/re-ordering-the-elements-of-a-drupal-webform-datepicker

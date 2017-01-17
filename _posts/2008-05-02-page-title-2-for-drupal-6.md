@@ -8,7 +8,7 @@ categories:
 - seo
 - programming
 - drupal
-layout: post
+layout: blog
 title: Page Title 2 for Drupal 6
 created: 1209747732
 permalink: blog/02-05-2008/page-title-2-drupal-6

@@ -14,7 +14,7 @@ categories:
 - linux
 - howto
 - drupal
-layout: post
+layout: blog
 title: From Russia without Love
 created: 1178620664
 permalink: blog/08-05-2007/spamming-russians

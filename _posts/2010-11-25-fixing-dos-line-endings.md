@@ -12,7 +12,7 @@ categories:
 - geek
 - code
 - drupal
-layout: post
+layout: blog
 title: Fixing Dos Line Endings
 created: 1290687928
 permalink: blog/25-11-2010/fixing-dos-line-endings

@@ -13,7 +13,7 @@ categories:
 - yads
 - cool
 - announcement
-layout: post
+layout: blog
 title: 'New Drupal Site: Rate My Christmas Tree'
 created: 1291933465
 permalink: blog/09-12-2010/new-drupal-site-rate-my-christmas-tree

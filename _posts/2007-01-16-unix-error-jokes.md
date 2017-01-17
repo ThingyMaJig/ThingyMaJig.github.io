@@ -5,7 +5,7 @@ excerpt: "<p>While <a title=\"UNIX Error Jokes\" href=\"http://digg.com/linux_un
 categories:
 - websites
 - humour
-layout: post
+layout: blog
 title: Unix Error Jokes
 created: 1168967803
 permalink: blog/16-01-2007/unix-error-jokes

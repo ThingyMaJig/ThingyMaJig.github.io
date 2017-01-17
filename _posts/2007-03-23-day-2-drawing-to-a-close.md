@@ -6,7 +6,7 @@ excerpt: "<p>Well thats it - this year's <strong>DrupalCon</strong> hosted by <e
 categories:
 - drupal
 - days out
-layout: post
+layout: blog
 title: Day 2 drawing to a close
 created: 1174693386
 permalink: blog/23-03-2007/day-2-drawing-to-a-close

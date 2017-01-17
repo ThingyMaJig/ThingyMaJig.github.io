@@ -5,7 +5,7 @@ categories:
 - websites
 - drupal
 - announcement
-layout: post
+layout: blog
 title: Awesome Drupal 5 release candidate 2
 created: 1168509981
 permalink: blog/11-01-2007/awesome-drupal-5-release-candidate-2

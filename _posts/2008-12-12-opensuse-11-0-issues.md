@@ -6,7 +6,7 @@ categories:
 - linux
 - howto
 - geek
-layout: post
+layout: blog
 title: OpenSuse 11.0 Issues
 created: 1229094927
 permalink: blog/12-12-2008/opensuse-110-windows-putty-ssh-no-home-key

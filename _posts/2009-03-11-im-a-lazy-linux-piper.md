@@ -16,7 +16,7 @@ categories:
 - howto
 - geek
 - drupal
-layout: post
+layout: blog
 title: I'm a lazy linux piper
 created: 1236770433
 permalink: blog/11-03-2009/lazy-linux-piping

@@ -8,7 +8,7 @@ categories:
 - websites
 - drupal
 - announcement
-layout: post
+layout: blog
 title: I have my own page!
 created: 1171169151
 permalink: blog/11-02-2007/i-have-my-own-page

@@ -10,7 +10,7 @@ categories:
 - iphone
 - free
 - design
-layout: post
+layout: blog
 title: My iPhone Theme
 created: 1209568606
 permalink: blog/30-04-2008/my-first-iphone-theme

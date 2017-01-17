@@ -12,7 +12,7 @@ categories:
 - mobile phone
 - k850i
 - free
-layout: post
+layout: blog
 title: I'm getting a new k850i!
 created: 1192011469
 permalink: blog/10-10-2007/im-getting-a-new-k850i

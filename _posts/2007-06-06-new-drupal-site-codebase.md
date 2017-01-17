@@ -19,7 +19,7 @@ categories:
 - drupal
 - dark basic pro
 - announcement
-layout: post
+layout: blog
 title: New Drupal Site - Codebase
 created: 1181147333
 permalink: blog/06-06-2007/new-drupal-site-codebase-dbp-site-com

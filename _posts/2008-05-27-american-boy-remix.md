@@ -7,7 +7,7 @@ categories:
 - music
 - free
 - cool
-layout: post
+layout: blog
 title: American Boy Remix
 created: 1211850523
 permalink: blog/27-05-2008/american-boy-remix

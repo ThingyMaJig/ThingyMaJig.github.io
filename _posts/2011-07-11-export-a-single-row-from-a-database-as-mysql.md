@@ -3,7 +3,7 @@ categories:
 - mysql
 - tip
 - programming
-layout: post
+layout: blog
 title: Export a single row from a database as MySQL
 created: 1310394074
 permalink: blog/11-07-2011/export-a-single-row-from-a-database-as-mysql

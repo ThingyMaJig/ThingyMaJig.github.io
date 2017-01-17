@@ -9,7 +9,7 @@ categories:
 - programming
 - linux
 - drupal
-layout: post
+layout: blog
 title: Neat commenting in Vim
 created: 1231777845
 permalink: blog/12-01-2009/neat-commenting-vim

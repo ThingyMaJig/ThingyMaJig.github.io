@@ -11,7 +11,7 @@ categories:
 - geek
 - drupal
 - cool
-layout: post
+layout: blog
 title: Which modules use hook_cron?
 created: 1179160554
 permalink: blog/14-05-2007/what-modules-use-hook-cron

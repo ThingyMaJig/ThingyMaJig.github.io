@@ -12,7 +12,7 @@ categories:
 - programming
 - howto
 - drupal
-layout: post
+layout: blog
 title: How to import users into Drupal using Devel
 created: 1232040188
 permalink: blog/15-01-2009/how-import-users-into-drupal-using-devel

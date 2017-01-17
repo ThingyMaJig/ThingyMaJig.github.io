@@ -5,7 +5,7 @@ categories:
 - humour
 - geek
 - bash
-layout: post
+layout: blog
 title: What is JFGI?
 created: 1200917646
 permalink: blog/21-01-2008/what-is-jfgi

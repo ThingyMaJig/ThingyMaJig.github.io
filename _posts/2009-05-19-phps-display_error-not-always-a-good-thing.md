@@ -10,7 +10,7 @@ categories:
 - programming
 - geek
 - drupal
-layout: post
+layout: blog
 title: PHP's display_error, not always a good thing!
 created: 1242740779
 permalink: blog/19-05-2009/phps-displayerror-setting-isnt-always-good-thing

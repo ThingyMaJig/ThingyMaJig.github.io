@@ -6,7 +6,7 @@ excerpt: <p>A few months ago I bought the <strong><a href="http://www.logitech.c
 categories:
 - review
 - hardware
-layout: post
+layout: blog
 title: 'Review: Logitech Cordless MX5000 Laser Sucks'
 created: 1163949256
 permalink: blog/19-11-2006/logitech-cordless-mx5000-laser-sucks

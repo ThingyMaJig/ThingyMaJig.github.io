@@ -9,7 +9,7 @@ categories:
 - video
 - humour
 - cool
-layout: post
+layout: blog
 title: Most Farted (Most Haunted Spoof)
 created: 1182178021
 permalink: blog/18-06-2007/most-farted-most-haunted-spoof

@@ -14,7 +14,7 @@ categories:
 - linux
 - lighttpd
 - drupal
-layout: post
+layout: blog
 title: Powered by Lighttpd
 created: 1208356013
 permalink: blog/16-04-2008/powered-lighttpd

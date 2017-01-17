@@ -7,7 +7,7 @@ excerpt: "<p>At the first race of the <em>FIA Formula 1</em> season, <strong>Dav
 categories:
 - video
 - cool
-layout: post
+layout: blog
 title: Redbull gives you wings
 created: 1174301497
 permalink: blog/19-03-2007/redbull-gives-you-wings

@@ -8,7 +8,7 @@ categories:
 - free
 - drupal
 - design
-layout: post
+layout: blog
 title: Drupal Wallpaper - Photoshop Tennis
 created: 1197911322
 permalink: blog/17-12-2007/drupal-wallpaper-photoshop-tennis

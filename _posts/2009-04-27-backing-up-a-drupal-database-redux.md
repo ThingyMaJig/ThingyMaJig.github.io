@@ -13,7 +13,7 @@ categories:
 - drupal
 - code
 - bash
-layout: post
+layout: blog
 title: 'Backing up a Drupal Database: Redux'
 created: 1240840555
 permalink: blog/27-04-2009/backing-drupal-database-redux

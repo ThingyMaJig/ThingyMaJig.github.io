@@ -10,7 +10,7 @@ categories:
 - howto
 - geek
 - cool
-layout: post
+layout: blog
 title: How much memory am I using?
 created: 1194530230
 permalink: blog/08-11-2007/how-much-memory-am-i-using

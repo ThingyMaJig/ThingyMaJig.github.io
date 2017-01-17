@@ -15,7 +15,7 @@ categories:
 - drupal
 - cool
 - apache
-layout: post
+layout: blog
 title: The price of sucess - too many users!
 created: 1193323594
 permalink: blog/25-10-2007/the-price-of-sucess-too-many-users

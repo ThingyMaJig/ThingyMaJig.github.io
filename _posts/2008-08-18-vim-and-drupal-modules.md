@@ -12,7 +12,7 @@ categories:
 - linux
 - geek
 - drupal
-layout: post
+layout: blog
 title: Vim and Drupal Modules
 created: 1219070882
 permalink: blog/18-08-08/vim-and-drupal-highlighting-php

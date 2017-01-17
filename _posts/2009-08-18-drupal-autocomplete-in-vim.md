@@ -8,7 +8,7 @@ categories:
 - vim
 - programming
 - drupal
-layout: post
+layout: blog
 title: Drupal Autocomplete in Vim
 created: 1250600632
 permalink: blog/18-08-2009/drupal-autocomplete-vim

@@ -15,7 +15,7 @@ categories:
 - lighttpd
 - geek
 - drupal
-layout: post
+layout: blog
 title: Lighttpd book
 created: 1230632952
 permalink: blog/30-12-2008/lighttpd-book

@@ -9,7 +9,7 @@ categories:
 - wii
 - hardware
 - games
-layout: post
+layout: blog
 title: I got me a Wii
 created: 1188905845
 permalink: blog/04-09-2007/i-got-me-a-wii

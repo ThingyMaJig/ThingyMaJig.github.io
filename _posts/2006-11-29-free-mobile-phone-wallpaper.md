@@ -7,7 +7,7 @@ excerpt: "<p><strong>Announcing <a href=\"http://www.wallpapers4urmobilephone.co
 categories:
 - websites
 - review
-layout: post
+layout: blog
 title: Free Mobile Phone Wallpaper
 created: 1164832901
 permalink: blog/29-11-2006/free-mobile-phone-wallpaper

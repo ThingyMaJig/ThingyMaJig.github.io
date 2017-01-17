@@ -14,7 +14,7 @@ categories:
 - drupal
 - design
 - announcement
-layout: post
+layout: blog
 title: Abessive For Drupal 6
 created: 1221520269
 permalink: blog/15-09-2008/abessive-drupal-6

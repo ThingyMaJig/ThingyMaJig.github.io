@@ -9,7 +9,7 @@ categories:
 - review
 - linux
 - howto
-layout: post
+layout: blog
 title: YAFC as an FTP Client
 created: 1170413118
 permalink: blog/02-02-2007/yafc-as-an-ftp-client

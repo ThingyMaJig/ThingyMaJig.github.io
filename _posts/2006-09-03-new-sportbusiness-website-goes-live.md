@@ -9,7 +9,7 @@ categories:
 - websites
 - drupal
 - announcement
-layout: post
+layout: blog
 title: New Sportbusiness website goes live!
 created: 1157238756
 permalink: blog/05-09-2006/sportbusiness-goes-live

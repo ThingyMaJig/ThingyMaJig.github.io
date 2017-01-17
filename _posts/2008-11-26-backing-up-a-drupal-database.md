@@ -22,7 +22,7 @@ categories:
 - drupal
 - code
 - bash
-layout: post
+layout: blog
 title: Backing up a Drupal Database
 created: 1227702466
 permalink: blog/26-11-2008/backing-drupal-database

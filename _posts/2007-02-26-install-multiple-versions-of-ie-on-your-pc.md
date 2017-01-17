@@ -11,7 +11,7 @@ categories:
 - drupal
 - design
 - cool
-layout: post
+layout: blog
 title: Install multiple versions of IE on your PC
 created: 1172449678
 permalink: blog/26-02-2007/install-multiple-versions-of-ie-on-your-pc

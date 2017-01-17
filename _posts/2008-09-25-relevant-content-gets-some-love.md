@@ -11,7 +11,7 @@ categories:
 - programming
 - drupal
 - announcement
-layout: post
+layout: blog
 title: Relevant Content gets some love
 created: 1222340902
 permalink: blog/25-09-2008/relevant-content-gets-some-love

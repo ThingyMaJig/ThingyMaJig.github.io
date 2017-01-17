@@ -11,7 +11,7 @@ categories:
 - review
 - mac
 - hardware
-layout: post
+layout: blog
 title: EyeTV and Hauppauge Nova T-Stick
 created: 1170755593
 permalink: blog/06-02-2007/eyetv-and-hauppage-stick-t

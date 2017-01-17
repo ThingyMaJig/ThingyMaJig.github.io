@@ -9,7 +9,7 @@ categories:
 - drupal
 - performance
 - tips
-layout: post
+layout: blog
 title: Drush Cron & XCache can cause var_size errors
 created: 1271237409
 permalink: blog/14-04-2010/drush-cron-xcache-can-cause-varsize-errors

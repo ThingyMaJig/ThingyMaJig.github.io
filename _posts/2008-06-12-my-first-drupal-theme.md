@@ -12,7 +12,7 @@ categories:
 - websites
 - drupal
 - design
-layout: post
+layout: blog
 title: My First Drupal Theme
 created: 1213276344
 permalink: blog/12-06-2008/my-first-drupal-theme

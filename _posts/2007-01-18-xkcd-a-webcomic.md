@@ -11,7 +11,7 @@ categories:
 - humour
 - geek
 - cool
-layout: post
+layout: blog
 title: xkcd - a webcomic
 created: 1169119630
 permalink: blog/18-01-2007/xkcd-a-webcomic

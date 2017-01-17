@@ -11,7 +11,7 @@ categories:
 - mac
 - free
 - design
-layout: post
+layout: blog
 title: 'ColorJack: Sphere Widget'
 created: 1173261612
 permalink: blog/07-03-2007/colorjack-sphere-widget

@@ -4,7 +4,7 @@ excerpt: "<p><strong><a href=\"http://www.wiidamage.com/\" title=\"Wii Damage\">
   remote.</p>\r\n"
 categories:
 - websites
-layout: post
+layout: blog
 title: 'Wii Damage: an accident waiting to happen?'
 created: 1166004322
 permalink: blog/13-12-2006/wii-damage-an-accident-waiting-to-happen

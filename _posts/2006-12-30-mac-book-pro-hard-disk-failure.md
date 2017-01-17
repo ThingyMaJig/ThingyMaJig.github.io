@@ -8,7 +8,7 @@ categories:
 - review
 - mac
 - hardware
-layout: post
+layout: blog
 title: Mac Book Pro Hard Disk Failure
 created: 1167520931
 permalink: blog/30-12-2006/mac-book-pro-hard-disk-failure

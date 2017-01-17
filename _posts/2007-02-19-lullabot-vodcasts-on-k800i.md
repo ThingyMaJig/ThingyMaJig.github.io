@@ -12,7 +12,7 @@ categories:
 - geek
 - drupal
 - cool
-layout: post
+layout: blog
 title: Lullabot Vodcasts on K800i
 created: 1171886023
 permalink: blog/19-02-2007/lullabot-vodcasts-on-k800i

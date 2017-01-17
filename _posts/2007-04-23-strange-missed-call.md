@@ -5,7 +5,7 @@ excerpt: "<p>Sitting in work on a Monday morning and I just received a call on m
   - not that I would have answered that anyway&hellip;</p>\r\n"
 categories:
 - miscellaneous
-layout: post
+layout: blog
 title: Strange missed call
 created: 1177320718
 permalink: blog/23-04-2007/strange-missed-call

@@ -7,7 +7,7 @@ categories:
 - programming
 - geek
 - drupal
-layout: post
+layout: blog
 title: Global Redirect Update
 created: 1215102657
 permalink: blog/03-07-2008/global-redirect-update

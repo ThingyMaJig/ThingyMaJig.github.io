@@ -16,7 +16,7 @@ categories:
 - flickr
 - eos 400d
 - e4600
-layout: post
+layout: blog
 title: 'Canon EOS 400D : Nikon E4600 : Sony Ericsson K800i'
 created: 1181689034
 permalink: blog/12-06-2007/canon-eos-400d-nikon-e4600-sony-ericsson-k800i

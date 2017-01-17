@@ -9,7 +9,7 @@ categories:
 - vim
 - linux
 - drupal
-layout: post
+layout: blog
 title: Removing trailing spaces with vim
 created: 1216220960
 permalink: blog/16-07-2008/removing-trailing-spaces-with-vim

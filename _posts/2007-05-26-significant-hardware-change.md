@@ -9,7 +9,7 @@ excerpt: "<p style=\"float: right;\">&nbsp;</p>\r\n<p>After watching a DVD last 
 categories:
 - windows
 - software
-layout: post
+layout: blog
 title: Significant hardware change?
 created: 1180172182
 permalink: blog/26-05-2007/significant-hardware-change

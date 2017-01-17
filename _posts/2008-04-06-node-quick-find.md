@@ -13,7 +13,7 @@ categories:
 - programming
 - drupal
 - announcement
-layout: post
+layout: blog
 title: Node Quick Find
 created: 1207441325
 permalink: blog/06-04-2008/node-quick-find

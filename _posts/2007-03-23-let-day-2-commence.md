@@ -8,7 +8,7 @@ excerpt: "<p>Well Day 2 is starting soon. Lets see what this beautiful new day b
 categories:
 - drupal
 - days out
-layout: post
+layout: blog
 title: Let day 2 commence!
 created: 1174665426
 permalink: blog/23-03-2007/let-day-2-commence

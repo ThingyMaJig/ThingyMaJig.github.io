@@ -19,7 +19,7 @@ categories:
 - free
 - drupal
 - announcement
-layout: post
+layout: blog
 title: Social Statistics module released
 created: 1178923582
 permalink: blog/11-05-2007/social-statistics-module-released

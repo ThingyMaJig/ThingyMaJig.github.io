@@ -9,7 +9,7 @@ excerpt: "<p>A good friend, <strong>Jon Hockley</strong> (AKA <a href=\"http://w
 categories:
 - review
 - music
-layout: post
+layout: blog
 title: Vivid Imagery UK | Phat Riff | Wild Heart
 created: 1166138569
 permalink: blog/14-12-2006/vivid-imagery-uk-phat-riff-wildheart

@@ -9,7 +9,7 @@ excerpt: "<p>This evening I went out to a pub called <strong><em>The Woodman</em
 categories:
 - review
 - days out
-layout: post
+layout: blog
 title: The Woodman
 created: 1171165472
 permalink: blog/11-02-2007/the-woodman

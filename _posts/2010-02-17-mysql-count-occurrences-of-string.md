@@ -13,7 +13,7 @@ categories:
 - mysql
 - geek
 - drupal
-layout: post
+layout: blog
 title: 'MySQL: Count occurrences of string'
 created: 1266417343
 permalink: blog/17-02-2010/mysql-count-occurrences-string

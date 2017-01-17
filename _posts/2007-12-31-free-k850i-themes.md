@@ -10,7 +10,7 @@ categories:
 - mobile phone
 - k850i
 - free
-layout: post
+layout: blog
 title: Free K850i Themes
 created: 1199067323
 permalink: blog/31-12-2007/free-k850i-themes

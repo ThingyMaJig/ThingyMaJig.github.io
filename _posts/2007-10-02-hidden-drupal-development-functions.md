@@ -21,7 +21,7 @@ excerpt: "<p>I was browsing around the <a title=\"Devel Module\" href=\"http://d
 categories:
 - programming
 - drupal
-layout: post
+layout: blog
 title: Hidden Drupal development functions
 created: 1191319667
 permalink: blog/02-10-2007/hugely-useful-hugely-undocumented

@@ -7,7 +7,7 @@ excerpt: "<p><a title=\"See bigger spider!\" href=\"http://flickr.com/photos/nic
 categories:
 - photos
 - k800i
-layout: post
+layout: blog
 title: Incy, Wincy Spider...
 created: 1157588354
 permalink: blog/07-09-06/incy-wincy-spider

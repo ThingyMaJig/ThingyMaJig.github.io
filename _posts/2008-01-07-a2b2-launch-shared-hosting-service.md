@@ -20,7 +20,7 @@ categories:
 - technology
 - miscellaneous
 - announcement
-layout: post
+layout: blog
 title: A2B2 launch shared hosting service
 created: 1199722195
 permalink: blog/07-01-2008/a2b2-launch-shared-hosting-service

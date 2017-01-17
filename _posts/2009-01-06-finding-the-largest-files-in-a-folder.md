@@ -8,7 +8,7 @@ categories:
 - howto
 - geek
 - bash
-layout: post
+layout: blog
 title: Finding the largest files in a folder
 created: 1231248769
 permalink: blog/06-01-2009/finding-largest-files-folder

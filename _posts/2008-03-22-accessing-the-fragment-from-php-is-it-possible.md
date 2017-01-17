@@ -9,7 +9,7 @@ categories:
 - programming
 - howto
 - drupal
-layout: post
+layout: blog
 title: Accessing the Fragment from PHP - is it possible?
 created: 1206173198
 permalink: blog/22-03-2008/accessing-the-fragment-from-php-is-it-possible

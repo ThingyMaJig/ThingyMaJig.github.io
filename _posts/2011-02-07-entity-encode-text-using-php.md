@@ -2,7 +2,7 @@
 categories:
 - code
 - programming
-layout: post
+layout: blog
 title: Entity Encode Text Using PHP
 created: 1297087617
 permalink: blog/07-02-2011/entity-encode-text-using-php

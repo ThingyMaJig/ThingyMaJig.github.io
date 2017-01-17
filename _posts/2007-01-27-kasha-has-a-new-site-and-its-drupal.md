@@ -7,7 +7,7 @@ categories:
 - music
 - drupal
 - announcement
-layout: post
+layout: blog
 title: Kasha has a new site, and its Drupal!
 created: 1169903692
 permalink: blog/27-01-2007/kasha

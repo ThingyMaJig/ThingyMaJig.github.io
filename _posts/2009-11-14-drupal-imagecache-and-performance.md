@@ -8,7 +8,7 @@ categories:
 - howto
 - geek
 - drupal
-layout: post
+layout: blog
 title: Drupal, ImageCache & Performance
 created: 1258198096
 permalink: blog/14-11-2009/drupal-imagecache-performance

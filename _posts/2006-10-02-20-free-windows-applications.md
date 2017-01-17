@@ -6,7 +6,7 @@ categories:
 - cool
 - free
 - software
-layout: post
+layout: blog
 title: 20 free windows applications
 created: 1159799357
 permalink: blog/02-10-2006/20-free-windows-apps

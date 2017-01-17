@@ -12,7 +12,7 @@ categories:
 - geek
 - drupal
 - bash
-layout: post
+layout: blog
 title: Getting Lighttpd working with AWStats
 created: 1208787527
 permalink: blog/21-04-2008/getting-lighttpd-working-with-awstats

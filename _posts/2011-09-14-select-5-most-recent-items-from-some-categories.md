@@ -3,7 +3,7 @@ categories:
 - mysql
 - tips
 - drupal
-layout: post
+layout: blog
 title: Select 5 most recent items from some categories
 created: 1316005652
 permalink: blog/14-09-2011/select-5-most-recent-items-from-some-categories

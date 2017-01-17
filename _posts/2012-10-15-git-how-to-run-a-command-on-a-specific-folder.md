@@ -3,7 +3,7 @@ categories:
 - git
 - howto
 - tips
-layout: post
+layout: blog
 title: 'Git: How to run a command on a specific folder'
 created: 1350311400
 permalink: blog/15-10-2012/git-how-to-run-a-command-on-a-specific-folder

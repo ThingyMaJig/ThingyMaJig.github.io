@@ -2,7 +2,7 @@
 categories:
 - drupal
 - howto
-layout: post
+layout: blog
 title: Nice Dates - A How To
 created: 1305026696
 permalink: blog/10-05-2011/nice-dates-a-how-to

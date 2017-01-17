@@ -11,7 +11,7 @@ categories:
 - mysql
 - howto
 - code
-layout: post
+layout: blog
 title: 'MySQL: How to upper-case words'
 created: 1285848908
 permalink: blog/30-09-2010/mysql-how-upper-case-words

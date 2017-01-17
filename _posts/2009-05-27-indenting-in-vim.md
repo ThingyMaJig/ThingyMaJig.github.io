@@ -8,7 +8,7 @@ categories:
 - vim
 - linux
 - howto
-layout: post
+layout: blog
 title: Indenting in Vim
 created: 1243423361
 permalink: blog/27-05-2009/indenting-vim

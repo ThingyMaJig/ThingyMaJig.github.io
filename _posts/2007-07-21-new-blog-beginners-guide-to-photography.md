@@ -12,7 +12,7 @@ categories:
 - photos
 - eos 400d
 - announcement
-layout: post
+layout: blog
 title: 'New Blog: Beginners guide to photography'
 created: 1185050522
 permalink: blog/21-07-2007/new-blog-beginners-guide-to-photography

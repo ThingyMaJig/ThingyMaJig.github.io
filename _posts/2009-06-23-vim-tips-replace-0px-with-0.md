@@ -11,7 +11,7 @@ categories:
 - tips
 - programming
 - drupal
-layout: post
+layout: blog
 title: 'Vim Tips: Replace 0px with 0'
 created: 1245756981
 permalink: blog/23-06-2009/vim-tips-replace-0px-0

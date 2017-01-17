@@ -7,7 +7,7 @@ categories:
 - linux
 - free
 - design
-layout: post
+layout: blog
 title: Webmin OSX Tiger Theme
 created: 1157643926
 permalink: blog/07-09-2006/webmin-osx-tiger-theme

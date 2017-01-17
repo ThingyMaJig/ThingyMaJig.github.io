@@ -20,7 +20,7 @@ categories:
 - drupal
 - design
 - cool
-layout: post
+layout: blog
 title: Sprucing up your User Profile Pages
 created: 1181662652
 permalink: blog/12-06-2007/sprucing-up-your-user-profile-pages

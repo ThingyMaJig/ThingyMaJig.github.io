@@ -7,7 +7,7 @@ categories:
 - mysql
 - howto
 - geek
-layout: post
+layout: blog
 title: Generate random string in MySQL
 created: 1215679876
 permalink: blog/10-07-2008/generate-random-string-mysql

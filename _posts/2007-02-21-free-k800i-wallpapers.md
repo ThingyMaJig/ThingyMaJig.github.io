@@ -12,7 +12,7 @@ categories:
 - mobile phone
 - k800i
 - free
-layout: post
+layout: blog
 title: Free K800i Wallpapers
 created: 1172049887
 permalink: blog/21-02-2007/free-k800i-wallpapers

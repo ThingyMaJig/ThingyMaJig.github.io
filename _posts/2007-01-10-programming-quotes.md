@@ -7,7 +7,7 @@ categories:
 - websites
 - programming
 - humour
-layout: post
+layout: blog
 title: Programming Quotes
 created: 1168424441
 permalink: blog/10-01-2007/programming-quotes

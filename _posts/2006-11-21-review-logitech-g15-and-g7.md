@@ -6,7 +6,7 @@ excerpt: "<p>Well I got my new keyboard and mouse to replace the <a title=\"Logi
 categories:
 - review
 - hardware
-layout: post
+layout: blog
 title: 'Review: Logitech G15 & G7'
 created: 1164121920
 permalink: blog/21-11-2006/review-logitech-g15-g7

@@ -9,7 +9,7 @@ categories:
 - free
 - design
 - cool
-layout: post
+layout: blog
 title: Free Christmas Wallpapers
 created: 1228053017
 permalink: blog/30-11-2008/free-christmas-wallpapers

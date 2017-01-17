@@ -10,7 +10,7 @@ categories:
 - os x
 - mac
 - apple
-layout: post
+layout: blog
 title: How to setup reminders on OS X
 created: 1278007163
 permalink: blog/01-07-2010/reminders-os-x

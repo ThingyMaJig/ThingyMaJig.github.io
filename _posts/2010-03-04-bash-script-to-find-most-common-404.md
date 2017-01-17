@@ -12,7 +12,7 @@ categories:
 - geek
 - drupal
 - apache
-layout: post
+layout: blog
 title: Bash script to find most common 404
 created: 1267696033
 permalink: blog/04-03-2010/bash-script-find-most-common-404

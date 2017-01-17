@@ -9,7 +9,7 @@ categories:
 - mac
 - howto
 - geek
-layout: post
+layout: blog
 title: Synergy for OSX Leopard
 created: 1215424852
 permalink: blog/07-07-2008/synergy-osx-leopard-deamon-mode

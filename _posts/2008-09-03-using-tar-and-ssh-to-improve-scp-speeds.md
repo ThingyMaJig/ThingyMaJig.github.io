@@ -11,7 +11,7 @@ categories:
 - linux
 - howto
 - geek
-layout: post
+layout: blog
 title: Using Tar and SSH to improve SCP Speeds
 created: 1220439975
 permalink: blog/03-09-2008/using-tar-and-ssh-improve-scp-speeds

@@ -7,7 +7,7 @@ categories:
 - firefox
 - drupal
 - cool
-layout: post
+layout: blog
 title: Firefox URL Shortcut for Drupal API
 created: 1163669651
 permalink: blog/16-11-2006/creating-a-url-shortcut-for-drupal-api-documentation-in-firefox

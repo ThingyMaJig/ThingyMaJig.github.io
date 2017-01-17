@@ -9,7 +9,7 @@ categories:
 - linux
 - howto
 - geek
-layout: post
+layout: blog
 title: How to SCP a path with spaces
 created: 1179138300
 permalink: blog/14-05-2007/how-to-scp-a-path-with-spaces

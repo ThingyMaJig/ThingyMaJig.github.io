@@ -8,7 +8,7 @@ categories:
 - linux
 - howto
 - bash
-layout: post
+layout: blog
 title: How to use "sed" to find and replace
 created: 1243345565
 permalink: blog/26-05-2009/how-use-sed-find-and-replace

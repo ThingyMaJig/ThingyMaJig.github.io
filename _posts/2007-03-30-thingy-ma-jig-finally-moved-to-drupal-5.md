@@ -8,7 +8,7 @@ categories:
 - websites
 - drupal
 - announcement
-layout: post
+layout: blog
 title: Thingy Ma Jig finally moved to Drupal 5
 created: 1175271764
 permalink: blog/30-03-2007/thingy-ma-jig-finally-moved-to-drupal-5

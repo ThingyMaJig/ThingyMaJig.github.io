@@ -8,7 +8,7 @@ categories:
 - performance
 - howto
 - drupal
-layout: post
+layout: blog
 title: XCache Variables, Drupal Page Cache and page_cache_fastpath()
 created: 1267026549
 permalink: blog/24-02-2010/xcache-variables-drupal-page-cache-and-pagecachefastpath

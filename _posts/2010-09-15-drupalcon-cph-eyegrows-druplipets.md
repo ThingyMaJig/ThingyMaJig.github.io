@@ -7,7 +7,7 @@ categories:
 - free
 - drupal
 - cool
-layout: post
+layout: blog
 title: DrupalCon CPH EyeGrows (Druplipets)
 created: 1284591217
 permalink: blog/15-09-2010/drupalcon-cph-eyegrows-druplipets

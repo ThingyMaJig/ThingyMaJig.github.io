@@ -2,7 +2,7 @@
 categories:
 - os x
 - homebrew
-layout: post
+layout: blog
 title: 'Homebrew: List packages and what uses them'
 created: 1411417609
 permalink: blog/22-09-2014/homebrew-list-packages-and-what-uses-them

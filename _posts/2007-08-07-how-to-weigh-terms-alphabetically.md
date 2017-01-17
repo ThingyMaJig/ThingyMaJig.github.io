@@ -13,7 +13,7 @@ categories:
 - mysql
 - drupal
 - cool
-layout: post
+layout: blog
 title: How to weigh terms alphabetically
 created: 1186484363
 permalink: blog/07-08-2007/how-to-weigh-terms-alphabetically

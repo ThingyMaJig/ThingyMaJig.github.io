@@ -9,7 +9,7 @@ categories:
 - free
 - design
 - cool
-layout: post
+layout: blog
 title: Free Kasha Wallpaper
 created: 1235469153
 permalink: blog/24-02-2009/free-kasha-wallpaper

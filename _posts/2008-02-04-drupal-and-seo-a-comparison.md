@@ -10,7 +10,7 @@ categories:
 - review
 - geek
 - drupal
-layout: post
+layout: blog
 title: 'Drupal and SEO: A comparison'
 created: 1202167237
 permalink: blog/04-02-2008/drupal-and-seo

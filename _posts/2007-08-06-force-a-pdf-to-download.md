@@ -18,7 +18,7 @@ categories:
 - linux
 - cool
 - apache
-layout: post
+layout: blog
 title: Force a PDF to download
 created: 1186418356
 permalink: blog/06-08-2007/force-a-pdf-to-download

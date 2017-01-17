@@ -13,7 +13,7 @@ categories:
 - games
 - dark basic pro
 - announcement
-layout: post
+layout: blog
 title: Christmas Coding Challenge
 created: 1166831194
 permalink: blog/22-12-2006/christmas-coding-challenge

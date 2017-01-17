@@ -8,7 +8,7 @@ excerpt: "<p>For those who dont know, <a title=\"Lydden Hill GoogleMap Link\" hr
 categories:
 - photos
 - days out
-layout: post
+layout: blog
 title: Lydden Hill Race Circuit BRDA 2006
 created: 1156800373
 permalink: blog/28-08-06/lydden-hill-august-2006

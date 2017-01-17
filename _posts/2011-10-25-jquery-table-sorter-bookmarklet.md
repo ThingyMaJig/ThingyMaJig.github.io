@@ -4,7 +4,7 @@ categories:
 - programming
 - webdev
 - jquery
-layout: post
+layout: blog
 title: JQuery Table Sorter Bookmarklet
 created: 1319536144
 permalink: blog/25-10-2011/jquery-table-sorter-bookmarklet

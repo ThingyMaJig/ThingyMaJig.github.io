@@ -8,7 +8,7 @@ categories:
 - programming
 - drupal
 - announcement
-layout: post
+layout: blog
 title: Call to arms (for Windows Drupal Developers)!
 created: 1199211976
 permalink: blog/01-01-2008/global-redirect-issues-under-windows-iis

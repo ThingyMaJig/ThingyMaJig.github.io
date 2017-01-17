@@ -7,7 +7,7 @@ categories:
 - websites
 - drupal
 - announcement
-layout: post
+layout: blog
 title: Drupal 5.0 Out & 6th Birthday
 created: 1168865143
 permalink: blog/15-01-2007/drupal-5-0-out-6th-birthday

@@ -11,7 +11,7 @@ categories:
 - ogre3d
 - games
 - free
-layout: post
+layout: blog
 title: My first project using Ogre
 created: 1179675516
 permalink: blog/20-05-2007/my-first-project-using-ogre

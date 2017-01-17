@@ -2,7 +2,7 @@
 categories:
 - drupal
 - linux
-layout: post
+layout: blog
 title: How to run Drush as Apache
 created: 1344597251
 permalink: blog/10-08-2012/how-to-run-drush-as-apache

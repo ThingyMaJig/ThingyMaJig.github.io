@@ -10,7 +10,7 @@ categories:
 - howto
 - geek
 - drupal
-layout: post
+layout: blog
 title: Patching can cause permission denied errors
 created: 1249991867
 permalink: blog/11-08-2009/patching-can-cause-permission-denied-errors

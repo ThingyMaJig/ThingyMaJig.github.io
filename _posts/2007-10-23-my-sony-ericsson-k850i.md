@@ -15,7 +15,7 @@ categories:
 - mobile phone
 - k850i
 - k800i
-layout: post
+layout: blog
 title: My Sony Ericsson k850i
 created: 1193177288
 permalink: blog/23-10-2007/my-sony-ericsson-k850i

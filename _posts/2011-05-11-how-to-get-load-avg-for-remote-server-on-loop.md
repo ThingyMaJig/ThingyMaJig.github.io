@@ -3,7 +3,7 @@ categories:
 - bash
 - linux
 - howto
-layout: post
+layout: blog
 title: How to get Load AVG for remote server on loop
 created: 1305125506
 permalink: blog/11-05-2011/how-to-get-load-avg-for-remote-server-on-loop

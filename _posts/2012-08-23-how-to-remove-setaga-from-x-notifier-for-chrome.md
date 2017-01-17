@@ -1,7 +1,7 @@
 ---
 categories:
 - tips
-layout: post
+layout: blog
 title: How to remove Setaga from X-Notifier for Chrome
 created: 1345716016
 permalink: blog/23-08-2012/how-to-remove-setaga-from-x-notifier-for-chrome

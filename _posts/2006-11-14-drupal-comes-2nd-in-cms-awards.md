@@ -4,7 +4,7 @@ excerpt: "<p>The drupal headlines at Digg today read&hellip;</p>\r\n<h3>Pakt CMS
   from PackPub&hellip;</p>\r\n"
 categories:
 - drupal
-layout: post
+layout: blog
 title: Drupal comes 2nd in CMS Awards
 created: 1163499787
 permalink: blog/14-11-2006/drupal-comes-2nd-in-cms-awards

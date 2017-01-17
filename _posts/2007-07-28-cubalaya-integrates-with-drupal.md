@@ -11,7 +11,7 @@ excerpt: "<p>Not many people have heard of <a href=\"http://cubalaya.co.uk/\" ti
 categories:
 - drupal
 - announcement
-layout: post
+layout: blog
 title: Cubalaya integrates with Drupal
 created: 1185646876
 permalink: blog/28-07-2007/cubalaya-integrates-with-drupal

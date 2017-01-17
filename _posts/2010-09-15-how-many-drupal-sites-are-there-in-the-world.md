@@ -9,7 +9,7 @@ categories:
 - seo
 - howto
 - drupal
-layout: post
+layout: blog
 title: How many Drupal sites are there in the world?
 created: 1284556552
 permalink: blog/15-09-2010/how-many-drupal-sites-are-there-world

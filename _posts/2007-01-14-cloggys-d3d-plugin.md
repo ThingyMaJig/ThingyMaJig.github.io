@@ -9,7 +9,7 @@ categories:
 - free
 - dark basic pro
 - cool
-layout: post
+layout: blog
 title: Cloggy's D3D Plugin
 created: 1168793394
 permalink: blog/14-01-2007/cloggys-d3d-plugin

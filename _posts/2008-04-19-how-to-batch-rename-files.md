@@ -11,7 +11,7 @@ categories:
 - linux
 - geek
 - bash
-layout: post
+layout: blog
 title: How to batch rename files
 created: 1208640664
 permalink: blog/19-04-2008/how-batch-rename-files

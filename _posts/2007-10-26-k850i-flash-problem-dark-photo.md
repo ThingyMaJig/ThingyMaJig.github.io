@@ -7,7 +7,7 @@ excerpt: "<p>Is anyone else getting dark photo's when they use the flash on the 
 categories:
 - mobile phone
 - k850i
-layout: post
+layout: blog
 title: K850i Flash Problem - dark photo
 created: 1193438417
 permalink: blog/26-10-2007/k850i-flash-problem

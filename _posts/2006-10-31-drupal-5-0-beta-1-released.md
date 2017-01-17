@@ -10,7 +10,7 @@ categories:
 - drupal
 - announcement
 - programming
-layout: post
+layout: blog
 title: Drupal 5.0 beta 1 released!
 created: 1162309901
 permalink: blog/31-10-06/drupal-5.0-beta-1-released
