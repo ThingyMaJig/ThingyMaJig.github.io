@@ -1,14 +1,4 @@
 ---
-excerpt: "<p>This morning I updated a site to the latest release of Drupal 5.16. Nothing
-  special there at all. I've done that many times as has (hopefully) mabye other drupal
-  devs&hellip; However, I'm a bit of a newbie when it comes to SVN. Didn't I mention
-  this drupal site was in an SVN repository? ;-)</p>\r\n<p>So, I've <code>svn copy</code>'d
-  the trunk to an &quot;<em><code>update_to_5.16</code></em>&quot; branch, checked
-  out this branch and done a <code>cvs up -dP -r DRUPAL-5-16</code>. Everything is
-  going according to plan so far. Next I run <code>svn status</code> to get a list
-  of files which I need to mark as added or deleted (or to list anything else which
-  has gone wrong). What happens next is I&nbsp;get a list of hundreds of CVS&nbsp;<em>Template</em>
-  files which have been added to the CVS&nbsp;folders. For example&hellip;</p>\r\n"
 categories:
 - tip
 - svn
@@ -21,10 +11,12 @@ title: I'm a lazy linux piper
 created: 1236770433
 permalink: blog/11-03-2009/lazy-linux-piping
 ---
-<p>This morning I updated a site to the latest release of Drupal 5.16. Nothing special there at all. I've done that many times as has (hopefully) mabye other drupal devs&hellip; However, I'm a bit of a newbie when it comes to SVN. Didn't I mention this drupal site was in an SVN repository? ;-)</p>
-<p>So, I've <code>svn copy</code>'d the trunk to an &quot;<em><code>update_to_5.16</code></em>&quot; branch, checked out this branch and done a <code>cvs up -dP -r DRUPAL-5-16</code>. Everything is going according to plan so far. Next I run <code>svn status</code> to get a list of files which I need to mark as added or deleted (or to list anything else which has gone wrong). What happens next is I&nbsp;get a list of hundreds of CVS&nbsp;<em>Template</em> files which have been added to the CVS&nbsp;folders. For example&hellip;</p>
+This morning I updated a site to the latest release of Drupal 5.16. Nothing special there at all. I've done that many times as has (hopefully) mabye other drupal devs&hellip; However, I'm a bit of a newbie when it comes to SVN. Didn't I mention this drupal site was in an SVN repository? ;-)
 <!--break-->
-<pre>
+
+So, I've `svn copy`'d the trunk to an "_`update_to_5.16`_" branch, checked out this branch and done a `cvs up -dP -r DRUPAL-5-16`. Everything is going according to plan so far. Next I run `svn status` to get a list of files which I need to mark as added or deleted (or to list anything else which has gone wrong). What happens next is I get a list of hundreds of CVS _Template_ files which have been added to the CVS folders. For example:
+
+```
 ?      profiles/default/CVS/Template
 M      profiles/default/CVS/Entries
 M      profiles/default/CVS/Tag
@@ -50,20 +42,31 @@ M      themes/garland/minnelli/CVS/Tag
 M      themes/garland/minnelli/color/CVS/Entries
 M      themes/garland/minnelli/color/CVS/Tag
 ?      themes/garland/CVS/Template
-&hellip;
-&hellip;
-</pre>
-<p>So as you can see from this (shortened) list, several Entries &amp; Tag files have been modified (along with 1 core file). The files labelled with a ? are ones which are new in the <em>Working Copy</em> which are not in the SVN repository.</p>
-<p>Now those who know me or read my blog may know I dont enjoy tedious jobs. I think the definition of tedious could be described as typing <code>svn add themes/garland/minnelli/CVS/Template</code> hundreds of times (for each ? file in list which was much longer that than). What do I do when I have to do tedious jobs? I find a bash script which will do it for me and then blog about it!</p>
-<p>So, firstly, I tried piping the <code>svn st</code> results through grep to filter out the results which need adding. I also add a filter to only add Template entries to start with.</p>
-<pre language="bash">
-svn st | grep ^? | grep Template$</pre>
-<p>The <code><em>svn st</em></code> is short-hand for <code>svn status</code>.</p>
-<p>Next we need to strip out the question marks and spaces at the beginning of each line. Enter <code>gawk</code>. I'm not an expert at <code>gawk</code>, but this time it seemed to <em>Just Work<sup>TM</sup></em>.</p>
-<pre language="bash">
-svn st | grep ^? | grep Template$ | gawk '{ print $2 }'</pre>
-<p>I then trid to just pipe that into <code>svn add</code>. Subversion did <strong>not</strong> appreciate this and complained about there not being enough arguments. &quot;Ok&quot;, I thought &mdash; I've seen this problem before when trying to work with the results of a list of files produced by the <code>find</code> command&hellip; What about the <code>xargs</code> command? <em><abbr title="English slang for 'Would you believe it'">Would you adam and eve it</abbr></em>? It worked!</p>
-<pre language="bash">
+...
+...
+```
+
+So as you can see from this (shortened) list, several Entries & Tag files have been modified (along with 1 core file). The files labelled with a ? are ones which are new in the _Working Copy_ which are not in the SVN repository.
+
+Now those who know me or read my blog may know I dont enjoy tedious jobs. I think the definition of tedious could be described as typing `svn add themes/garland/minnelli/CVS/Template` hundreds of times (for each ? file in list which was much longer that than). What do I do when I have to do tedious jobs? I find a bash script which will do it for me and then blog about it!
+
+So, firstly, I tried piping the `svn st` results through grep to filter out the results which need adding. I also add a filter to only add Template entries to start with.
+
+```bash
+svn st | grep ^? | grep Template$
+```
+
+The `svn st` is short-hand for `svn status`.
+
+Next we need to strip out the question marks and spaces at the beginning of each line. Enter `gawk`. I'm not an expert at `gawk`, but this time it seemed to _Just Work<sup>TM</sup>_.
+
+```bash
+svn st | grep ^? | grep Template$ | gawk '{ print $2 }'
+```
+
+I then trid to just pipe that into `svn add`. Subversion did **not** appreciate this and complained about there not being enough arguments. "Ok", I thought &mdash; I've seen this problem before when trying to work with the results of a list of files produced by the `find` command&hellip; What about the `xargs` command? _<abbr title="English slang for 'Would you believe it'">Would you adam and eve it</abbr>_? It worked!
+
+```bash
 $ svn st | grep ^? | grep Template$ | gawk '{ print $2 }' | xargs svn add
 A         profiles/default/CVS/Template
 A         profiles/CVS/Template
@@ -118,5 +121,7 @@ A         modules/color/images/CVS/Template
 A         modules/color/CVS/Template
 A         modules/taxonomy/CVS/Template
 A         modules/user/CVS/Template
-</pre>
-<p>Brilliant!&nbsp;One line of commands joined together with a pipe and I have saved many, <strong>many</strong> minutes of tedious and bording typing!</p>
+```
+
+Brilliant! One line of commands joined together with a pipe and I have saved many, **many** minutes of tedious and bording typing!
+

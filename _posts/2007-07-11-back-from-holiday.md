@@ -16,7 +16,7 @@ permalink: blog/11-07-2007/back-from-holiday
 <p>Well I've been back from holiday for a few days now and am still wishing I was in Scotland. It's SUCH a nice place!</p>
 <p>If you need some convincing on whether or not the scenery is worth it, check out our <a title="Scottish Holiday" href="http://www.flickr.com/groups/scotland-holiday/">Flickr Scottish Holiday</a> group.</p>
 <p>Below are a selection of snaps from the holiday</p>
-<!-- break -->
+<!--break-->
 <div style="width: 260px; float: left;">
 <div>
 <p><a href="http://www.flickr.com/photos/kateharris/767756741/in/pool-432749@N23" title="View over Loch during Trossachs Tour"><img width="240" height="160" border="0" src="http://farm2.static.flickr.com/1406/767756741_2d81188938_m_d.jpg" alt="View over Loch during Trossachs Tour" /></a></p>

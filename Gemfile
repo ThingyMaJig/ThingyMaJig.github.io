@@ -1,16 +1,22 @@
 source 'https://rubygems.org'
+ruby RUBY_VERSION
 
-gem 'gsl'
+# group :jekyll_import do
+#   gem 'gsl'
+#   # Required for importing
+#   gem 'jekyll-import'
+#   gem 'sequel'
+#   gem 'mysql'
+# end
+
+gem "github-pages", group: :jekyll_plugins
 
 group :jekyll_plugins do
-    gem 'github-pages'
-
-    # Required for importing
-    gem 'jekyll-import'
-    gem 'sequel'
-    gem 'mysql'
-
-    gem "jekyll-assets"
+  # gem "jekyll-assets"
+  gem "jekyll-sitemap"
 end
 
-gem 'bootstrap-sass'
+gem "dotenv"
+
+# @TODO probably need to remove this...
+# gem 'bootstrap-sass'

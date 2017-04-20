@@ -7,7 +7,7 @@ created: 1345716016
 permalink: blog/23-08-2012/how-to-remove-setaga-from-x-notifier-for-chrome
 ---
 <p>I am a huge fan of the <a href="https://chrome.google.com/webstore/detail/x-notifier-for-gmailhotma/cdfjbkbddpfnoplfhceolpopfoepleco">X Notifier extension for Chrome</a>, however recently the developer has added an advertising component called <a href="http://www.setaga.com/">Setaga</a>. I don't recall agreeing or opt-ing into this, but its possible I did without thinking. In any case, I hate this and wanted to remove it.</p>
-<!-- break -->
+<!--break-->
 <p>I found <a href="http://xnotifier.tobwithu.com/wp/forums/topic/setaga" title="Segata Forum Post">a post on their forum</a>, but could not see how to remove it. So I did it myself. Here's how:</p>
 <ol>
   <li>Find the extension. For me (on Windows 7) it was in:<br /><pre>C:\Users\{USERNAME}\AppData\Local\Google\Chrome\User Data\Default\Extensions\apebebenniibdlpbookhgelaghfnaonp\1.0.12_0</pre>. Note, that random text is the application ID. You also see it in the URL for the extension on the <a href="https://chrome.google.com/webstore/category/home">Webstore site</a>.</li>

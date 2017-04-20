@@ -1,3 +1,40 @@
 ---
 ---
-@import "tmj"
+
+@import "bootstrap/bootstrap";
+
+header {
+  position: fixed;
+  left: -165px;
+  top: 0;
+  bottom: 0;
+  width: 260px;
+  background: #202020;
+  color: #ddd;
+  z-index: 100;
+  overflow: hidden;
+  transition: 0.5s ease left;
+  padding: 5px;
+  h1 {
+    text-align: right;
+  }
+  .show-on-open {
+    display: none;
+  }
+
+
+  &:hover {
+    left: 0;
+    .show-on-open {
+      display: inline;
+    }
+
+  }
+  & + div.wrapper {
+    margin-left: 95px;
+    transition: 0.5s ease margin-left;
+  }
+  &:hover + div.wrapper {
+    margin-left: 260px;
+  }
+}

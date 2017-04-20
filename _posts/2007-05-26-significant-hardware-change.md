@@ -20,7 +20,7 @@ permalink: blog/26-05-2007/significant-hardware-change
     <li>I had been sleep upgrading again. I thought I'd grown out of that...</li>
     <li>Windows was up to its good old screw ups.</li>
 </ol>
-<!-- break -->
+<!--break-->
 <p>Interestingly, this is a fully legit copy of <strong>Windows XP Pro OEM</strong> and I haven't had a single hardware change since I installed it.</p>
 <div style="margin: 0px 0px 5px 5px; float: right; width: 336px; height: 280px;">[adsense:336x280:9994499560]</div>
 <p>The next great achievement was the reactivation itself. The online activation wouldn't work - it failed to connect for some silent and unknown reason. Normally I'd have a check-list of things to go through if there are connection issues, such as firewall and so on - however <strong>none of these</strong> were an issue as everything else was working fine and the firewall was disabled.</p>

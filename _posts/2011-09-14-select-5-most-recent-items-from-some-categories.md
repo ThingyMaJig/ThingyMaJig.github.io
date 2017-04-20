@@ -9,8 +9,8 @@ created: 1316005652
 permalink: blog/14-09-2011/select-5-most-recent-items-from-some-categories
 ---
 <p>Ever needed to build a list which "sub-selects", say, 5 items from a given list of categories? This snippet should help.</p>
-<p>Assume the following schema&hellip;</p>
 <!--break-->
+<p>Assume the following schema&hellip;</p>
 <pre language="mysql">
 CREATE TABLE content (
   id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -48,7 +48,7 @@ INSERT INTO content (title, STATUS, created) VALUES
   ('Abico Meus Ullamcorper',       0, UNIX_TIMESTAMP('2011-09-01 00:00:00')),
   ('Ulciscor Antehabeo Gravis',    1, UNIX_TIMESTAMP('2011-09-05 11:00:00'));
 
-TRUNCATE tags;  
+TRUNCATE tags;
 INSERT INTO tags (title) VALUES ('alpha'), ('beta'), ('gamma'), ('delta');
 
 TRUNCATE content_tags;

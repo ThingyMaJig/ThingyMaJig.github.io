@@ -11,7 +11,7 @@ permalink: blog/14-11-2011/quick-tip-drupal-hook-commenting-using-vim
 <p>According to the <a href="http://drupal.org/node/1354#hookimpl">Drupal Coding Standards for Documenting Hook Implementations</a>, its considered a good practice to quickly chuck a comment before any function which implements a Drupal hook (eg, <code>hook_menu</code>). This helps someone reading your code quickly see that the function is actually linked with a hook in Drupal and isn't just a function in your module to be called directly.</p>
 
 <p>But&hellip; Well&hellip; The thing is&hellip; Does anyone else get bored of writing the following over and over again? I know do&hellip;</p>
-<!-- break -->
+<!--break-->
 <pre language="php">
 /**
  * Implements hook_menu().

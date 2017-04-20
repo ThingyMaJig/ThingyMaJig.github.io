@@ -17,7 +17,7 @@ permalink: blog/08-10-2006/my-first-drupal-module
 ---
 <p>Well its nearly 1am - but I've just submitted by very first Drupal module to the community</p>
 <p><strong><a title="Global Redirect helps to stop duplicate content" href="http://drupal.org/project/globalredirect">http://drupal.org/project/globalredirect</a></strong></p>
-<!-- break -->
+<!--break-->
 <p>Basically, if you have an alias for a node then it will redirect you to the alias if you try to access the node directly&hellip; The best example is the site it was designed for. At <a href="http://www.sportbusiness.com">Sportbusiness.com</a> you could access a news story by:</p>
 <p><a href="http://www.sportbusiness.com/node/160374">http://www.sportbusiness.com/node/160374</a></p>
 <p>However if you try that on <a href="http://www.sportbusiness.com">sportbusiness.com</a>, this module picks up that <em>node/160374</em> actually has an alias attached to it and you will automatically be whisked away to that aliased URL, in this case:</p>
