@@ -1,0 +1,8 @@
+{% if include.categories.size > 0 %}
+  in <span class="blog-categories">
+  {% for page_category in include.categories %}
+    {% assign category = site.my_categories | where: "slug", page_category | first %}
+    <a href="{{ category.url }}">{{ category.name }}</a>
+  {% endfor %}
+  </span>
+{% endif %}

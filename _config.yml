@@ -24,11 +24,25 @@ sass:
   style: compressed
 excerpt_separator: <!--break-->
 
+collections:
+  my_categories:
+    output: true
+    permalink: /tags/:name/
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: my_categories
+    values:
+      layout: blog_by_category
+
+incremental: true
 
 # CANNOT CHANGE THESE
 lsi: false
 safe: true
-incremental: false
+#incremental: false
 highlighter: rouge
 gist:
   noscript: false

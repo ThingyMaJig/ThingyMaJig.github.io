@@ -1,6 +1,6 @@
 ---
 categories:
-- os x
+- os-x
 - homebrew
 layout: blog
 title: 'Homebrew: List packages and what uses them'
