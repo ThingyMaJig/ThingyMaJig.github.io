@@ -5,7 +5,7 @@ excerpt: "<p>Well thats it - this year's <strong>DrupalCon</strong> hosted by <e
   title=\"Lullabot podcast 35 from DrupalCon at the Yahoo OSCMS Summit\">podcast</a>.</p>\r\n"
 categories:
 - drupal
-- days out
+- days-out
 layout: blog
 title: Day 2 drawing to a close
 created: 1174693386

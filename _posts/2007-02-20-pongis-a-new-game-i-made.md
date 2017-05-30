@@ -10,7 +10,7 @@ categories:
 - programming
 - games
 - free
-- dark basic pro
+- dbp
 - cool
 - announcement
 layout: blog

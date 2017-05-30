@@ -7,7 +7,7 @@ excerpt: "<p>Any regulars to this site will know that...</p>\r\n<ol style=\"padd
   title=\"Themes For Your Mobile Phone\">Themes4UrMobilePhone.com</a></em>!</p>\r\n"
 categories:
 - yads
-- mobile phone
+- mobile-phone
 - k850i
 - free
 layout: blog

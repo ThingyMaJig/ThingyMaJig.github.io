@@ -5,6 +5,8 @@ layout: default
 
 {{ content }}
 
+<div class="card-columns">
 {% for post in site.categories[page.slug] %}
   {% include blog-teaser.html post=post %}
 {% endfor %}
+</div>

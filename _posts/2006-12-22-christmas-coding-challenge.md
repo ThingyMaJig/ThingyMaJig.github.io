@@ -11,7 +11,7 @@ excerpt: "<p><strong><a title=\"The Games Creators Christmas Coding Challenge\" 
 categories:
 - programming
 - games
-- dark basic pro
+- dbp
 - announcement
 layout: blog
 title: Christmas Coding Challenge

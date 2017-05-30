@@ -7,7 +7,7 @@ excerpt: "<p>Well I've been back from holiday for a few days now and am still wi
 categories:
 - photos
 - miscellaneous
-- days out
+- days-out
 layout: blog
 title: Back from Holiday!
 created: 1184148548

@@ -2,8 +2,11 @@
   <div class="card-block">
     <h4 class="card-title"><a href="{{ include.post.url }}">{{ include.post.title }}</a></h4>
 
-    <div class="card-text">{{ include.post.excerpt }}</div>
+    <p class="card-text"><small class="text-muted">
+      <i class="fa fa-calendar" aria-hidden="true"></i> {{ include.post.date | date_to_long_string}}
+      {% include blog-categories.html categories=include.post.categories %}
+    </small></p>
 
-    <p class="card-text"><small class="text-muted">Posted on {{ include.post.date | date_to_long_string}} {% include blog-categories.html categories=include.post.categories %}</small></p>
+    <div class="card-text">{{ include.post.excerpt }}</div>
   </div>
 </article>

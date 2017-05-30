@@ -19,7 +19,7 @@ gems:
   - jekyll-titles-from-headings
   - jekyll-seo-tag
   - jekyll-sitemap
-paginate: 20
+paginate: 10
 sass:
   style: compressed
 excerpt_separator: <!--break-->
@@ -36,8 +36,6 @@ defaults:
       type: my_categories
     values:
       layout: blog_by_category
-
-incremental: true
 
 # CANNOT CHANGE THESE
 lsi: false

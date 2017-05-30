@@ -11,10 +11,10 @@ categories:
 - technology
 - review
 - photos
-- mobile phone
+- mobile-phone
 - k800i
 - flickr
-- eos 400d
+- eos-400d
 - e4600
 layout: blog
 title: 'Canon EOS 400D : Nikon E4600 : Sony Ericsson K800i'

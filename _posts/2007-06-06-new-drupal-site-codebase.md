@@ -17,7 +17,7 @@ categories:
 - yads
 - programming
 - drupal
-- dark basic pro
+- dbp
 - announcement
 layout: blog
 title: New Drupal Site - Codebase

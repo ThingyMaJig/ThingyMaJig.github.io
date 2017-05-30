@@ -7,7 +7,7 @@ excerpt: "<p>For those who dont know, <a title=\"Lydden Hill GoogleMap Link\" hr
   meeting - its where it was born</p>\r\n"
 categories:
 - photos
-- days out
+- days-out
 layout: blog
 title: Lydden Hill Race Circuit BRDA 2006
 created: 1156800373
@@ -29,6 +29,6 @@ permalink: blog/28-08-06/lydden-hill-august-2006
 <p>Throughout the day, the mini's continued to provide entertainment with battles for position often getting this close&hellip;<br/>
 <a class="imagefield-fancybox" rel="lydden-gallery" href="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a7.jpg" title="Door to Door anyone?"><img src="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a7.thumbnail.jpg" alt="Mini Entertainment" /></a></p>
 <p>Finally, here are two photo's from the last races I saw that day (Supermodified B Finals) before the monsoon came in. After that we decided we were so soaked we'd rather go home that get hyperthermia (we were littlerally 100% soaked&hellip; would have probably been drier to jump into a swimming pool).<br/>
-<a class="imagefield-fancybox" rel="lydden-gallery" href="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a8.jpg" title="Supermodified B Final 1"><img src="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a8.thumbnail.jpg" alt="Supermodified B Final 1 Thumbnail" /></a> <a class="imagefield-fancybox" rel="lydden-gallery" href="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a9.jpg" title="Supermodified B Final 2"><img src="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a9.thumbnail.jpg" alt="Supermodified B Final 2 Thumbnail" /></a> 
+<a class="imagefield-fancybox" rel="lydden-gallery" href="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a8.jpg" title="Supermodified B Final 1"><img src="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a8.thumbnail.jpg" alt="Supermodified B Final 1 Thumbnail" /></a> <a class="imagefield-fancybox" rel="lydden-gallery" href="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a9.jpg" title="Supermodified B Final 2"><img src="/sites/thingy-ma-jig.co.uk/files/images/lydden-2006a9.thumbnail.jpg" alt="Supermodified B Final 2 Thumbnail" /></a>
 </p>
 <p>Anywho - if you have any photo's from the day on your site - please let me know, I'd love to see some!</p>

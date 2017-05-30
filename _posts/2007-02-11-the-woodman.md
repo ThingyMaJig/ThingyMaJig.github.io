@@ -8,7 +8,7 @@ excerpt: "<p>This evening I went out to a pub called <strong><em>The Woodman</em
   <em>Old Speckled Hen</em>, <em>Bombardier</em> &amp; <em>Youngs Special</em>.</p>\r\n"
 categories:
 - review
-- days out
+- days-out
 layout: blog
 title: The Woodman
 created: 1171165472
@@ -35,7 +35,7 @@ function load() {
     map.setCenter(new GLatLng(51.254384, 0.147152), 11);
     map.addControl(new GSmallMapControl());
     map.addControl(new GMapTypeControl());
-    
+
     var point = new GLatLng(51.254384, 0.147152);
     var marker = new GMarker(point);
     GEvent.addListener(marker, "click", function() {

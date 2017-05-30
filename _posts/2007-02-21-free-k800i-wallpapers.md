@@ -9,7 +9,7 @@ excerpt: "<p>Browsing around the web this morning, I found a really cool site fo
   to <strong>Celebrity</strong></p>\r\n"
 categories:
 - photos
-- mobile phone
+- mobile-phone
 - k800i
 - free
 layout: blog

@@ -13,7 +13,7 @@ categories:
 - free
 - drupal
 - cool
-- mobile phone
+- mobile-phone
 layout: blog
 title: Fantastic drupal site for Free Nokia N73 themes
 created: 1175764682

@@ -6,7 +6,7 @@ excerpt: "<p>This morning I decided to watch the <a title=\"Upgrading from Drupa
   screen real estate.</p>\r\n"
 categories:
 - software
-- mobile phone
+- mobile-phone
 - k800i
 - howto
 - geek

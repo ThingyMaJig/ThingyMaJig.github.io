@@ -1,7 +1,7 @@
 ---
 categories:
 - drupal
-- new relic
+- new-relic
 - greasemonkey
 layout: blog
 title: Forcing New Relic into Kiosk Mode

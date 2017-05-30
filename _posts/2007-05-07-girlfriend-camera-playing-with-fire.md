@@ -8,7 +8,7 @@ categories:
 - review
 - photos
 - flickr
-- eos 400d
+- eos-400d
 - cool
 layout: blog
 title: Girlfriend + Camera = playing with fire!

@@ -9,7 +9,7 @@ excerpt: "<p>I just got off the phone with the <strong>O2</strong> Upgrades team
   the <em>retention team</em>. After being on hold for a few minutes the call was
   retrieved from the abyss that was the call waiting queue and I got a good offer&hellip;</p>\r\n"
 categories:
-- mobile phone
+- mobile-phone
 - k850i
 - free
 layout: blog

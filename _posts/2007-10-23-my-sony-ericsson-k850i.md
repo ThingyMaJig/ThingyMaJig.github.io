@@ -12,7 +12,7 @@ excerpt: "<p>Well it arrived last week and so far I've been nothing but <strong>
   I decided to walk the route again and take some more shots - a like-for-like comparison!</p>\r\n"
 categories:
 - review
-- mobile phone
+- mobile-phone
 - k850i
 - k800i
 layout: blog

@@ -8,7 +8,7 @@ excerpt: "<p>The new Dr Who appears to be Matt Smith!</p>\r\n<p>Whoa! He is so y
 categories:
 - tv
 - geek
-- doctor who
+- doctor-who
 - announcement
 layout: blog
 title: New Dr who is Matt Smith

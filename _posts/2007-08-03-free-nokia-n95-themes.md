@@ -10,7 +10,7 @@ excerpt: "<p>Are you in need of free <em><strong>Nokia N95</strong> themes</em>?
 categories:
 - websites
 - n95
-- mobile phone
+- mobile-phone
 - free
 - cool
 layout: blog

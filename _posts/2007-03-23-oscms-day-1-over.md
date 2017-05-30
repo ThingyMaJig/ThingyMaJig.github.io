@@ -5,7 +5,7 @@ excerpt: "<p>Well - It took us 10 hours longer than it should have done to get t
 categories:
 - photos
 - drupal
-- days out
+- days-out
 layout: blog
 title: OSCMS Day 1 - over!
 created: 1174610809

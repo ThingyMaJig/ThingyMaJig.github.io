@@ -7,7 +7,7 @@ excerpt: "<p>I just wanted to quickly setup a reminder on my mac (in this case t
   a little convoluted, however here is the process...</p>\r\n"
 categories:
 - quicksilver
-- os x
+- os-x
 - mac
 - apple
 layout: blog

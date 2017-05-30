@@ -10,7 +10,7 @@ categories:
 - websites
 - review
 - photos
-- eos 400d
+- eos-400d
 - announcement
 layout: blog
 title: 'New Blog: Beginners guide to photography'

@@ -7,7 +7,7 @@ categories:
 - programming
 - games
 - free
-- dark basic pro
+- dbp
 - cool
 layout: blog
 title: Cloggy's D3D Plugin

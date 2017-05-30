@@ -8,7 +8,7 @@ excerpt: "<p>Well I'm back home - fortunately my flight was better leaving the U
   this pool!</p>\r\n"
 categories:
 - drupal
-- days out
+- days-out
 layout: blog
 title: Yahoo OSCMS Summit 2007 Summary
 created: 1174824998
