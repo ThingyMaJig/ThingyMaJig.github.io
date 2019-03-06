@@ -14,7 +14,7 @@ exclude:
   - README.md
   - Gemfile.lock
   - Gemfile
-gems:
+plugins:
   - jekyll-optional-front-matter
   - jekyll-titles-from-headings
   - jekyll-seo-tag
