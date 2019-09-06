@@ -1,7 +1,6 @@
 title: Thingy Ma Jig
 email: webmaster@thingy-ma-jig.co.uk
-description: > # this means to ignore newlines until "baseurl:"
-  TODO!
+description: Drupal Geeky Blog
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 repository: ThingyMaJig/ThingyMaJig.github.io
@@ -27,7 +26,7 @@ excerpt_separator: <!--break-->
 collections:
   my_categories:
     output: true
-    permalink: /tags/:name/
+    permalink: /tags/:name
 
 defaults:
   -

@@ -32,24 +32,17 @@
   </head>
   <body>
     <header>
-      <h1>T<span class="show-on-open">hingy </span>M<span class="show-on-open">a </span>J<span class="show-on-open">ig</span></h1>
+      <h1><a href="/">
+        T<span class="show-on-open" id="show-on-open-t">hingy</span>M<span class="show-on-open" id="show-on-open-m">a</span>J<span class="show-on-open" id="show-on-open-j">ig</span>
+      </a></h1>
       <p>{{ site.description | default: site.github.project_tagline }}</p>
-
-      <ul class="nav flex-column">
-        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-      </ul>
 
       <h3>Connect</h3>
       <div class="social-icons">
+        <a class="facebook" a href="http://www.facebook.com/pages/Thingy-Ma-Jig-A-Blog-of-Drupal-Technology-and-General-Bloginess/22760952880?ref=site">Facebook</a>
         <a class="twitter" href="https://twitter.com/nick_thompson">Twitter</a>
         <a class="linkedin" href="http://www.linkedin.com/in/nicholasjamesthompson">LinkedIn</a>
         <a class="github" href="https://github.com/njt1982">GitHub</a>
-      </div>
-
-      <h3>Follow</h3>
-      <div class="social-icons">
-        <a class="facebook" a href="http://www.facebook.com/pages/Thingy-Ma-Jig-A-Blog-of-Drupal-Technology-and-General-Bloginess/22760952880?ref=site">Facebook</a>
-        <a class="googleplus" href="https://plus.google.com/114122529769355411840">Google Plus</a>
       </div>
 
       <h3>Topics</h3>
@@ -58,10 +51,10 @@
       {% for site_cat in sorted_cats %}
         {% assign slug = site_cat[0] %}
         {% assign category = site.my_categories | where: "slug", slug | first %}
-        <span class="category">
-          <a href="{{ category.url }}">{{ category.name }}</a>
+        <a href="{{ category.url }}" class="category">
+          {{ category.name }}
           <small class="text-muted">{{ site_cat | last | size }}</small>
-        </span>
+        </a>
       {% endfor %}
       </section>
     </header>
