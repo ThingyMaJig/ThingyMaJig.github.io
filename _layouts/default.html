@@ -35,7 +35,7 @@
       <h1><a href="/">
         T<span class="show-on-open" id="show-on-open-t">hingy</span>M<span class="show-on-open" id="show-on-open-m">a</span>J<span class="show-on-open" id="show-on-open-j">ig</span>
       </a></h1>
-      <p>{{ site.description | default: site.github.project_tagline }}</p>
+      <p class="description sliding-container">{{ site.description | default: site.github.project_tagline }}</p>
 
       <h3>Connect</h3>
       <div class="social-icons">
@@ -46,7 +46,7 @@
       </div>
 
       <h3>Topics</h3>
-      <section class="category-list">
+      <section class="category-list sliding-container">
       {% assign sorted_cats = site.categories | sort %}
       {% for site_cat in sorted_cats %}
         {% assign slug = site_cat[0] %}

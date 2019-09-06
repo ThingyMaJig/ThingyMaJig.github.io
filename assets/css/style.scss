@@ -43,8 +43,9 @@ header {
       &#show-on-open-m { width: 21px; }
       &#show-on-open-j { width: 32px; }
     }
-    .category-list {
-      margin: 0;
+    .sliding-container {
+      margin-left: 0;
+      margin-right: 0;
     }
   }
   & + div.wrapper {
@@ -88,11 +89,14 @@ header {
     }
   }
 
-  .category-list {
-    font-size: 0.66em;
+  .sliding-container {
     margin-left: -90px;
     margin-right: 90px;
     transition: margin ease $sidebar-transition-time;
+  }
+
+  .category-list {
+    font-size: 0.66em;
     display: flex;
     flex-wrap: wrap;
     align-content: stretch;

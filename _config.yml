@@ -1,6 +1,6 @@
 title: Thingy Ma Jig
 email: webmaster@thingy-ma-jig.co.uk
-description: Drupal Geeky Blog
+description: Thingy Ma Jig is the blog of Nicholas Thompson and contains any useful tips, sites and general blog-stuff which are considered interesting or handy!
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 repository: ThingyMaJig/ThingyMaJig.github.io
