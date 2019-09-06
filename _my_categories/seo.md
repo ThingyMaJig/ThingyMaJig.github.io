@@ -1,5 +1,5 @@
 ---
 slug: seo
-name: seo
+name: SEO
 ---
-<strong>SEO</strong> is an important part of website production. Below are my <strong>SEO</strong> articles.
+<strong>Search Engine Optimising</strong> is an important part of any website. Below are my <strong>SEO</strong> articles.
